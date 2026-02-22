@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+:root {
+    --black: #000000;
+    --dark: #333333;
+    --muted: #666666;
+    --light: #999999;
+    --rule: #cccccc;
+    --paper: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Crimson Pro', 'Times New Roman', serif;
+    font-size: 11.5pt;
+    line-height: 1.5;
+    color: var(--black);
+    background: var(--paper);
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.75in;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--black);
+}
+
+header h1 {
+    font-size: 24pt;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+}
+
+header .tagline {
+    font-size: 10pt;
+    color: var(--muted);
+    letter-spacing: 0.02em;
+}
+
+header .contact {
+    margin-top: 0.5rem;
+    font-size: 10pt;
+}
+
+header .contact a {
+    color: var(--black);
+    text-decoration: none;
+}
+
+header .contact a:hover {
+    text-decoration: underline;
+}
+
+/* Language Toggle */
+.lang-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.lang-toggle a {
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--rule);
+    transition: all 0.2s;
+}
+
+.lang-toggle a:hover,
+.lang-toggle a.active {
+    color: var(--black);
+    border-color: var(--black);
+}
+
+/* Navigation */
+nav {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+nav a {
+    color: var(--muted);
+    text-decoration: none;
+    margin: 0 1rem;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+nav a:hover {
+    color: var(--black);
+    border-bottom-color: var(--black);
+}
+
+/* Photo Section */
+.photos {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.photo-frame {
+    border: 1px solid var(--rule);
+    padding: 4px;
+    background: var(--paper);
+}
+
+.photo-frame.large {
+    width: 2.25in;
+    height: 3in;
+}
+
+.photo-frame.small {
+    width: 1.75in;
+    height: 2.25in;
+    align-self: flex-end;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 8pt;
+    color: var(--light);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Sections */
+section {
+    margin-bottom: 1.75rem;
+}
+
+h2 {
+    font-size: 11pt;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border-bottom: 1px solid var(--black);
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    font-style: italic;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 0.75rem;
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* CV-style entries */
+.entry {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    align-items: baseline;
+}
+
+.entry-main {
+    display: block;
+}
+
+.entry-title {
+    font-weight: 400;
+}
+
+.entry-detail {
+    color: var(--muted);
+    font-size: 10pt;
+}
+
+.entry-date {
+    text-align: right;
+    white-space: nowrap;
+    font-size: 10pt;
+}
+
+/* Numbered List (like CV) */
+ol.numbered {
+    list-style: none;
+    counter-reset: item;
+}
+
+ol.numbered > li {
+    display: grid;
+    grid-template-columns: 2rem 1fr auto;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
+    align-items: baseline;
+}
+
+ol.numbered > li::before {
+    counter-increment: item;
+    content: counter(item) ".";
+    text-align: right;
+    padding-right: 0.5rem;
+}
+
+ol.numbered .title {
+    font-weight: 400;
+}
+
+ol.numbered .venue {
+    font-size: 10pt;
+    color: var(--muted);
+    display: block;
+}
+
+ol.numbered .date {
+    text-align: right;
+    font-size: 10pt;
+    white-space: nowrap;
+}
+
+ol.numbered .coauthor {
+    font-size: 10pt;
+    color: var(--muted);
+}
+
+ol.numbered .link {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+ol.numbered .link:hover {
+    color: var(--black);
+}
+
+/* Reversed numbering for talks */
+ol.numbered.reversed {
+    counter-reset: item 15; /* Set to total + 1 */
+}
+
+ol.numbered.reversed > li::before {
+    counter-increment: item -1;
+}
+
+/* Research Areas */
+.research-area {
+    margin-bottom: 1.25rem;
+}
+
+.research-area .area-label {
+    font-style: italic;
+    margin-bottom: 0.25rem;
+}
+
+/* Varia Grid */
+.varia-list {
+    display: block;
+}
+
+.varia-item {
+    margin-bottom: 0.75rem;
+}
+
+.varia-item strong {
+    font-weight: 600;
+}
+
+.varia-item ul {
+    margin-left: 1.5rem;
+    margin-top: 0.25rem;
+    font-size: 10pt;
+}
+
+.varia-item li {
+    margin-bottom: 0.15rem;
+}
+
+/* CV Download Button */
+.cv-button {
+    display: inline-block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--black);
+    color: var(--black);
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: all 0.2s;
+}
+
+.cv-button:hover {
+    background: var(--black);
+    color: var(--paper);
+}
+
+/* Footer */
+footer {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-size: 9pt;
+    color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    body {
+        padding: 1rem;
+        font-size: 11pt;
+    }
+
+    .photos {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .photo-frame.small {
+        align-self: center;
+    }
+
+    .entry {
+        grid-template-columns: 1fr;
+    }
+
+    .entry-date {
+        text-align: left;
+        color: var(--muted);
+    }
+
+    ol.numbered > li {
+        grid-template-columns: 2rem 1fr;
+    }
+
+    ol.numbered .date {
+        grid-column: 2;
+        text-align: left;
+        margin-top: 0.15rem;
+    }
+
+    nav a {
+        margin: 0 0.5rem;
+    }
+}
+
+@media print {
+    .lang-toggle, nav {
+        display: none;
+    }
+    body {
+        padding: 0;
+    }
+}
