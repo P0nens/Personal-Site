@@ -139,20 +139,6 @@ nav a:hover {
     display: block;
 }
 
-.photo-placeholder {
-    width: 100%;
-    height: 100%;
-    background: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 8pt;
-    color: var(--light);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-}
-
 /* Sections */
 section {
     margin-bottom: 2rem;
@@ -182,7 +168,7 @@ h4 {
     font-style: italic;
     color: var(--muted);
     margin-top: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 p {
@@ -223,7 +209,7 @@ p {
 /* Video Embed */
 .video-container {
     max-width: 100%;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 0.5rem;
     position: relative;
     padding-bottom: 56.25%;
     height: 0;
@@ -244,70 +230,57 @@ p {
     text-align: center;
     font-size: 10pt;
     color: var(--muted);
-    margin-top: 0.5rem;
+    margin-bottom: 1rem;
     font-style: italic;
 }
 
-/* Numbered List (like CV) */
-ol.numbered {
+/* Talks List */
+ul.talks-list {
     list-style: none;
-    counter-reset: item;
 }
 
-ol.numbered > li {
+ul.talks-list > li {
     display: grid;
-    grid-template-columns: 1.75rem 1fr auto;
-    gap: 0.25rem 0.5rem;
+    grid-template-columns: 1fr auto;
+    gap: 0.25rem 1rem;
     margin-bottom: 1rem;
-    align-items: baseline;
+    padding-left: 1rem;
+    border-left: 1px solid var(--rule);
 }
 
-ol.numbered > li::before {
-    counter-increment: item;
-    content: counter(item) ".";
-    text-align: right;
-    font-size: 10pt;
-}
-
-ol.numbered .title {
+ul.talks-list .title {
     font-weight: 400;
+    grid-column: 1;
 }
 
-ol.numbered .venue {
+ul.talks-list .venue {
     font-size: 10pt;
     color: var(--muted);
     display: block;
-    grid-column: 2;
+    grid-column: 1;
 }
 
-ol.numbered .date {
+ul.talks-list .date {
     text-align: right;
     font-size: 10pt;
     white-space: nowrap;
-}
-
-ol.numbered .coauthor {
-    font-size: 10pt;
-    color: var(--muted);
-    display: block;
+    grid-row: 1;
     grid-column: 2;
 }
 
-ol.numbered .note {
+ul.talks-list .coauthor {
+    font-size: 10pt;
+    color: var(--muted);
+    display: block;
+    grid-column: 1;
+}
+
+ul.talks-list .note {
     font-size: 9pt;
     color: var(--muted);
     font-style: italic;
     display: block;
-    grid-column: 2;
-}
-
-/* Reversed numbering for talks */
-ol.numbered.reversed-12 {
-    counter-reset: item 13;
-}
-
-ol.numbered.reversed-12 > li::before {
-    counter-increment: item -1;
+    grid-column: 1;
 }
 
 /* Research Areas */
@@ -401,12 +374,12 @@ footer {
         color: var(--muted);
     }
 
-    ol.numbered > li {
-        grid-template-columns: 1.5rem 1fr;
+    ul.talks-list > li {
+        grid-template-columns: 1fr;
     }
 
-    ol.numbered .date {
-        grid-column: 2;
+    ul.talks-list .date {
+        grid-column: 1;
         text-align: left;
         margin-top: 0.15rem;
     }
