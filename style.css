@@ -200,6 +200,18 @@ p {
     margin-top: 0.1rem;
 }
 
+.entry-detail a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    transition: all 0.2s;
+}
+
+.entry-detail a:hover {
+    color: var(--black);
+    border-bottom-color: var(--black);
+}
+
 .entry-date {
     text-align: right;
     white-space: nowrap;
