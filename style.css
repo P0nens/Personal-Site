@@ -75,6 +75,7 @@ header .contact a:hover {
     font-size: 9pt;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    z-index: 100;
 }
 
 .lang-toggle a {
@@ -83,6 +84,7 @@ header .contact a:hover {
     padding: 0.25rem 0.5rem;
     border: 1px solid var(--rule);
     transition: all 0.2s;
+    background: var(--paper);
 }
 
 .lang-toggle a:hover,
@@ -115,29 +117,19 @@ nav a:hover {
     border-bottom-color: var(--black);
 }
 
-/* Photo Section */
-.photos {
+/* Single Photo Section */
+.photo-section {
     display: flex;
     justify-content: center;
-    gap: 1.5rem;
-    margin: 2rem 0;
+    margin: 2rem 0 2.5rem;
 }
 
 .photo-frame {
     border: 1px solid var(--rule);
     padding: 4px;
     background: var(--paper);
-}
-
-.photo-frame.large {
-    width: 2.25in;
-    height: 3in;
-}
-
-.photo-frame.small {
-    width: 1.75in;
-    height: 2.25in;
-    align-self: flex-end;
+    width: 3in;
+    height: 3.75in;
 }
 
 .photo-frame img {
@@ -163,7 +155,7 @@ nav a:hover {
 
 /* Sections */
 section {
-    margin-bottom: 1.75rem;
+    margin-bottom: 2rem;
 }
 
 h2 {
@@ -173,19 +165,28 @@ h2 {
     letter-spacing: 0.15em;
     border-bottom: 1px solid var(--black);
     padding-bottom: 0.25rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 h3 {
     font-size: 11pt;
     font-weight: 600;
     font-style: italic;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+h4 {
+    font-size: 10.5pt;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 p {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     text-align: justify;
     hyphens: auto;
 }
@@ -195,7 +196,7 @@ p {
     display: grid;
     grid-template-columns: 1fr auto;
     gap: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem;
     align-items: baseline;
 }
 
@@ -210,12 +211,41 @@ p {
 .entry-detail {
     color: var(--muted);
     font-size: 10pt;
+    margin-top: 0.1rem;
 }
 
 .entry-date {
     text-align: right;
     white-space: nowrap;
     font-size: 10pt;
+}
+
+/* Video Embed */
+.video-container {
+    max-width: 100%;
+    margin: 0 auto 1.5rem;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.video-caption {
+    text-align: center;
+    font-size: 10pt;
+    color: var(--muted);
+    margin-top: 0.5rem;
+    font-style: italic;
 }
 
 /* Numbered List (like CV) */
@@ -226,9 +256,9 @@ ol.numbered {
 
 ol.numbered > li {
     display: grid;
-    grid-template-columns: 2rem 1fr auto;
-    gap: 0.25rem;
-    margin-bottom: 0.75rem;
+    grid-template-columns: 1.75rem 1fr auto;
+    gap: 0.25rem 0.5rem;
+    margin-bottom: 1rem;
     align-items: baseline;
 }
 
@@ -236,7 +266,7 @@ ol.numbered > li::before {
     counter-increment: item;
     content: counter(item) ".";
     text-align: right;
-    padding-right: 0.5rem;
+    font-size: 10pt;
 }
 
 ol.numbered .title {
@@ -247,6 +277,7 @@ ol.numbered .venue {
     font-size: 10pt;
     color: var(--muted);
     display: block;
+    grid-column: 2;
 }
 
 ol.numbered .date {
@@ -258,48 +289,44 @@ ol.numbered .date {
 ol.numbered .coauthor {
     font-size: 10pt;
     color: var(--muted);
+    display: block;
+    grid-column: 2;
 }
 
-ol.numbered .link {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 8pt;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+ol.numbered .note {
+    font-size: 9pt;
     color: var(--muted);
-    text-decoration: none;
-    margin-left: 0.5rem;
-}
-
-ol.numbered .link:hover {
-    color: var(--black);
+    font-style: italic;
+    display: block;
+    grid-column: 2;
 }
 
 /* Reversed numbering for talks */
-ol.numbered.reversed {
-    counter-reset: item 15; /* Set to total + 1 */
+ol.numbered.reversed-12 {
+    counter-reset: item 13;
 }
 
-ol.numbered.reversed > li::before {
+ol.numbered.reversed-12 > li::before {
     counter-increment: item -1;
 }
 
 /* Research Areas */
 .research-area {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
 }
 
 .research-area .area-label {
     font-style: italic;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
 }
 
-/* Varia Grid */
+/* Varia List */
 .varia-list {
     display: block;
 }
 
 .varia-item {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
 }
 
 .varia-item strong {
@@ -313,7 +340,7 @@ ol.numbered.reversed > li::before {
 }
 
 .varia-item li {
-    margin-bottom: 0.15rem;
+    margin-bottom: 0.2rem;
 }
 
 /* CV Download Button */
@@ -338,12 +365,19 @@ ol.numbered.reversed > li::before {
 
 /* Footer */
 footer {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     padding-top: 1rem;
     border-top: 1px solid var(--rule);
     text-align: center;
     font-size: 9pt;
     color: var(--muted);
+}
+
+/* Legend */
+.legend {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin-bottom: 1.25rem;
 }
 
 /* Responsive */
@@ -353,13 +387,9 @@ footer {
         font-size: 11pt;
     }
 
-    .photos {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .photo-frame.small {
-        align-self: center;
+    .photo-frame {
+        width: 2.5in;
+        height: 3.125in;
     }
 
     .entry {
@@ -372,7 +402,7 @@ footer {
     }
 
     ol.numbered > li {
-        grid-template-columns: 2rem 1fr;
+        grid-template-columns: 1.5rem 1fr;
     }
 
     ol.numbered .date {
