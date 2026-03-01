@@ -199,6 +199,7 @@
             border-left-color: #1a7a7a;
         }
         
+        /* Gradient borders for multiple tags */
         .talks-list li.interest-1.interest-2 {
             border-left: 3px solid;
             border-image: linear-gradient(to bottom, #1a5f8a 50%, #8a5a1a 50%) 1;
@@ -234,11 +235,31 @@
             border-image: linear-gradient(to bottom, #5a1a8a 50%, #1a8a1a 50%) 1;
         }
         
+        .talks-list li.interest-1.interest-2.interest-C {
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, #1a5f8a 33%, #8a5a1a 33%, #8a5a1a 66%, #1a7a7a 66%) 1;
+        }
+        
+        .talks-list li.interest-L.interest-C {
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, #1a8a1a 50%, #1a7a7a 50%) 1;
+        }
+        
         .talks-list .title {
             display: block;
             font-weight: 500;
             color: #222;
             margin-bottom: 0.25rem;
+        }
+        
+        .talks-list .title a {
+            color: #222;
+            text-decoration: none;
+        }
+        
+        .talks-list .title a:hover {
+            color: #1a5f8a;
+            text-decoration: underline;
         }
         
         .talks-list .tags-container {
@@ -250,6 +271,16 @@
             font-size: 9.5pt;
             color: var(--muted, #666);
             margin-bottom: 0.15rem;
+        }
+        
+        .talks-list .venue a {
+            color: var(--muted, #666);
+            text-decoration: none;
+        }
+        
+        .talks-list .venue a:hover {
+            color: #1a5f8a;
+            text-decoration: underline;
         }
         
         .talks-list .coauthor {
@@ -428,7 +459,7 @@
 
     <section id="talks">
         <h2>Presentations</h2>
-        <p class="legend">* = abstract refereed · ** = paper refereed</p>
+        <p class="legend">* = abstract refereed · ** = paper refereed · † = invited</p>
 
         <div class="video-container">
             <iframe 
@@ -490,7 +521,7 @@
             </div>
         </div>
 
-        <!-- Upcoming Talks (after March 1, 2025) -->
+        <!-- Upcoming Talks (after March 1, 2026) -->
         <div class="talks-section-header">
             <h4>📅 Upcoming Talks</h4>
             <div class="line"></div>
@@ -500,13 +531,13 @@
         <ul class="talks-list upcoming-talks" id="upcoming-talks">
             <li data-date="2026-06-15" data-interests="1,C" class="interest-1 interest-C">
                 <span class="title">
-                    Towards an Explanatory Cognitive Model for Blackwell Informativeness<sup>*</sup>
+                    <a href="https://mbr026.com">Towards an Explanatory Cognitive Model for Blackwell Informativeness</a><sup>*</sup>
                     <span class="tags-container">
                         <span class="tag tag-1">I</span>
                         <span class="tag tag-C">C</span>
                     </span>
                 </span>
-                <span class="venue">10th International Conference on Model-Based Reasoning, Rome, Italy</span>
+                <span class="venue"><a href="https://mbr026.com">10th International Conference on Model-Based Reasoning</a>, Rome, Italy</span>
                 <span class="date">Jun 15–17, 2026</span>
             </li>
             <li data-date="2026-04-24" data-interests="1,2" class="interest-1 interest-2">
@@ -520,25 +551,26 @@
                 <span class="venue">Inaugural Humanities of AI Workshop, Johns Hopkins University, Baltimore, MD</span>
                 <span class="date">Apr 24–26, 2026</span>
             </li>
-            <li data-date="2026-04-16" data-interests="2" class="interest-2">
+            <li data-date="2026-04-16" data-interests="2,C" class="interest-2 interest-C">
                 <span class="title">
-                    Curb Your (Brain-Model Alignment) Enthusiasm<sup>*</sup>
+                    <a href="https://aiandphilosophy.org">Curb Your (Brain-Model Alignment) Enthusiasm</a><sup>*</sup>
                     <span class="tags-container">
                         <span class="tag tag-2">II</span>
+                        <span class="tag tag-C">C</span>
                     </span>
                 </span>
                 <span class="coauthor">Co-authored with Arnold Fleishman</span>
-                <span class="venue">AI and Philosophy, New Orleans, LA</span>
+                <span class="venue"><a href="https://aiandphilosophy.org">AI and Philosophy</a>, New Orleans, LA</span>
                 <span class="date">Apr 16, 2026</span>
             </li>
             <li data-date="2026-04-10" data-interests="3" class="interest-3">
                 <span class="title">
-                    On Fashion's Perceptual Meaning<sup>**</sup>
+                    <a href="https://aesthetics-online.org/events/EventDetails.aspx">On Fashion's Perceptual Meaning</a><sup>**</sup>
                     <span class="tags-container">
                         <span class="tag tag-3">III</span>
                     </span>
                 </span>
-                <span class="venue">American Society for Aesthetics, Eastern Division, Philadelphia, PA</span>
+                <span class="venue"><a href="https://aesthetics-online.org/events/EventDetails.aspx">American Society for Aesthetics, Eastern Division</a>, Philadelphia, PA</span>
                 <span class="date">Apr 10–11, 2026</span>
             </li>
             <li data-date="2026-04-04" data-interests="3,L" class="interest-3 interest-L">
@@ -563,103 +595,11 @@
                 <span class="venue">UF Graduate Philosophy Conference, Gainesville, FL</span>
                 <span class="date">Apr 4, 2026</span>
             </li>
-            <li data-date="2026-02-18" data-interests="1" class="interest-1">
-                <span class="title">
-                    Why Presentism Precludes Explanation<sup>*</sup>
-                    <span class="tags-container">
-                        <span class="tag tag-1">I</span>
-                    </span>
-                </span>
-                <span class="venue">Central APA, Philosophy of Time Society, Chicago, IL</span>
-                <span class="date">Feb 18, 2026</span>
-            </li>
-            <li data-date="2026-01-07" data-interests="1" class="interest-1">
-                <span class="title">
-                    How Causation Explains: A Semantic Inquiry<sup>*</sup>
-                    <span class="tags-container">
-                        <span class="tag tag-1">I</span>
-                    </span>
-                </span>
-                <span class="venue">Eastern APA, Society for Philosophy of Causation, Baltimore, MD</span>
-                <span class="date">Jan 7, 2026</span>
-            </li>
-            <li data-date="2025-11-08" data-interests="1" class="interest-1">
-                <span class="title">
-                    Semantics for Explanation<sup>**</sup>
-                    <span class="tags-container">
-                        <span class="tag tag-1">I</span>
-                    </span>
-                </span>
-                <span class="venue">Illinois Philosophical Association, Charleston, IL</span>
-                <span class="date">Nov 8, 2025</span>
-            </li>
-            <li data-date="2025-11-01" data-interests="1" class="interest-1">
-                <span class="title">
-                    Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?<sup>**</sup>
-                    <span class="tags-container">
-                        <span class="tag tag-1">I</span>
-                    </span>
-                </span>
-                <span class="venue">Indiana Philosophical Association, Bloomington, IN</span>
-                <span class="note">Winner, 2025 Graduate Paper Prize</span>
-                <span class="date">Nov 1, 2025</span>
-            </li>
-            <li data-date="2025-10-24" data-interests="1" class="interest-1">
-                <span class="title">
-                    Semantics for Explanation<sup>**</sup>
-                    <span class="tags-container">
-                        <span class="tag tag-1">I</span>
-                    </span>
-                </span>
-                <span class="venue">24th University of Toronto Graduate Conference, Toronto, Canada</span>
-                <span class="date">Oct 24, 2025</span>
-            </li>
-            <li data-date="2025-10-16" data-interests="1" class="interest-1">
-                <span class="title">
-                    Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?<sup>*</sup>
-                    <span class="tags-container">
-                        <span class="tag tag-1">I</span>
-                    </span>
-                </span>
-                <span class="venue">CREPH: Mind Conference, Liège, Belgium</span>
-                <span class="date">Oct 16, 2025</span>
-            </li>
-            <li data-date="2025-10-09" data-interests="1,2" class="interest-1 interest-2">
-                <span class="title">
-                    Do AI Agents Meet the Epistemic Norms for Explanation?<sup>*</sup>
-                    <span class="tags-container">
-                        <span class="tag tag-1">I</span>
-                        <span class="tag tag-2">II</span>
-                    </span>
-                </span>
-                <span class="venue">XVI International Ontology Congress, Basque Country, Spain</span>
-                <span class="date">Oct 9, 2025</span>
-            </li>
-            <li data-date="2025-09-05" data-interests="1" class="interest-1">
-                <span class="title">
-                    The Special Questions Dispute<sup>**</sup>
-                    <span class="tags-container">
-                        <span class="tag tag-1">I</span>
-                    </span>
-                </span>
-                <span class="venue">SOPhiA, Salzburg, Austria</span>
-                <span class="date">Sep 5, 2025</span>
-            </li>
-            <li data-date="2025-07-13" data-interests="1" class="interest-1">
-                <span class="title">
-                    The Special Questions Dispute<sup>**</sup>
-                    <span class="tags-container">
-                        <span class="tag tag-1">I</span>
-                    </span>
-                </span>
-                <span class="venue">99th Joint Session of the Aristotelian and Mind Societies, Glasgow, Scotland</span>
-                <span class="date">Jul 13, 2025</span>
-            </li>
         </ul>
         
         <p class="empty-state" id="upcoming-empty">No upcoming talks match your filter.</p>
 
-        <!-- Past Talks (before March 1, 2025) -->
+        <!-- Past Talks (before March 1, 2026) -->
         <div class="talks-section-header">
             <h4>📁 Past Talks</h4>
             <div class="line"></div>
@@ -667,45 +607,146 @@
         </div>
         
         <ul class="talks-list past-talks" id="past-talks">
-            <!-- No past talks from the provided list -->
+            <li data-date="2026-02-18" data-interests="1,L" class="interest-1 interest-L">
+                <span class="title">
+                    Why Presentism Precludes Explanation<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue">Central APA, <a href="https://www.philtimesociety.com/meetings/">Philosophy of Time Society</a>, Chicago, IL</span>
+                <span class="date">Feb 18, 2026</span>
+            </li>
+            <li data-date="2026-01-07" data-interests="1,L" class="interest-1 interest-L">
+                <span class="title">
+                    How Causation Explains: A Semantic Inquiry<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue">Eastern APA, <a href="https://causation.science">Society for Philosophy of Causation</a>, Baltimore, MD</span>
+                <span class="date">Jan 7, 2026</span>
+            </li>
+            <li data-date="2025-11-20" data-interests="3,L" class="interest-3 interest-L">
+                <span class="title">
+                    <a href="https://www.ifmparis.fr/en/news/symposium-2025">Fashion and the Jacksonian Mode: Intentionality Beyond Language</a><sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-3">III</span>
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue"><a href="https://www.ifmparis.fr/en/news/symposium-2025">Symposium, Institut Français de la Mode</a>, Paris, France</span>
+                <span class="date">Nov 20, 2025</span>
+            </li>
+            <li data-date="2025-11-08" data-interests="1,L" class="interest-1 interest-L">
+                <span class="title">
+                    <a href="https://illinoisphilosophicalassociation.wordpress.com/calls-for-papers-2025">Semantics for Explanation</a><sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue"><a href="https://illinoisphilosophicalassociation.wordpress.com/calls-for-papers-2025">Illinois Philosophical Association</a>, Charleston, IL</span>
+                <span class="date">Nov 8, 2025</span>
+            </li>
+            <li data-date="2025-11-03" data-interests="L" class="interest-L">
+                <span class="title">
+                    <a href="https://www.oberlin.edu/arts-and-sciences/departments/philosophy">Composition and Metalinguistic Negotiation</a><sup>†</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue">Talk for philosophy majors and faculty, <a href="https://www.oberlin.edu/arts-and-sciences/departments/philosophy">Oberlin College</a></span>
+                <span class="date">Nov 3, 2025</span>
+            </li>
+            <li data-date="2025-11-01" data-interests="1,C" class="interest-1 interest-C">
+                <span class="title">
+                    <a href="https://ipa.hanover.edu">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</a><sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-C">C</span>
+                    </span>
+                </span>
+                <span class="venue"><a href="https://ipa.hanover.edu">Indiana Philosophical Association</a>, Bloomington, IN</span>
+                <span class="note">Winner, 2025 Graduate Paper Prize</span>
+                <span class="date">Nov 1, 2025</span>
+            </li>
+            <li data-date="2025-10-24" data-interests="1,L" class="interest-1 interest-L">
+                <span class="title">
+                    <a href="https://philosophy.utoronto.ca/event/2025-annual-toronto-graduate-philosophy-conference/">Semantics for Explanation</a><sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue"><a href="https://philosophy.utoronto.ca/event/2025-annual-toronto-graduate-philosophy-conference/">24th University of Toronto Graduate Conference</a>, Toronto, Canada</span>
+                <span class="date">Oct 24, 2025</span>
+            </li>
+            <li data-date="2025-10-16" data-interests="1,C" class="interest-1 interest-C">
+                <span class="title">
+                    <a href="http://www.pheno.ulg.ac.be/colloques/">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</a><sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-C">C</span>
+                    </span>
+                </span>
+                <span class="venue"><a href="http://www.pheno.ulg.ac.be/colloques/">CREPH: Mind Conference</a>, Liège, Belgium</span>
+                <span class="date">Oct 16, 2025</span>
+            </li>
+            <li data-date="2025-10-09" data-interests="1,2" class="interest-1 interest-2">
+                <span class="title">
+                    <a href="https://www.ontologia.info/es/index.php/program">Do AI Agents Meet the Epistemic Norms for Explanation?</a><sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-2">II</span>
+                    </span>
+                </span>
+                <span class="venue"><a href="https://www.ontologia.info/es/index.php/program">XVI International Ontology Congress</a>, Basque Country, Spain</span>
+                <span class="date">Oct 9, 2025</span>
+            </li>
+            <li data-date="2025-09-05" data-interests="1,L" class="interest-1 interest-L">
+                <span class="title">
+                    <a href="https://sophia-conference.org/">The Special Questions Dispute</a><sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue"><a href="https://sophia-conference.org/">SOPhiA</a>, Salzburg, Austria</span>
+                <span class="date">Sep 5, 2025</span>
+            </li>
+            <li data-date="2025-07-13" data-interests="1,L" class="interest-1 interest-L">
+                <span class="title">
+                    <a href="https://aristoteliansociety.org.uk/the-joint-session/">The Special Questions Dispute</a><sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue"><a href="https://aristoteliansociety.org.uk/the-joint-session/">99th Joint Session of the Aristotelian and Mind Societies</a>, Glasgow, Scotland</span>
+                <span class="date">Jul 13, 2025</span>
+            </li>
+            <li data-date="2025-05-09" data-interests="L,C" class="interest-L interest-C">
+                <span class="title">
+                    <a href="http://www.institutnicod.org/">Composition and Metalinguistic Negotiation</a><sup>†</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-L">L</span>
+                        <span class="tag tag-C">C</span>
+                    </span>
+                </span>
+                <span class="venue">Salvador Mascarenhas Lab Meeting, <a href="http://www.institutnicod.org/">Institut Jean Nicod</a>, Paris, France</span>
+                <span class="date">May 9, 2025</span>
+            </li>
         </ul>
         
-        <p class="empty-state visible" id="past-empty">No past talks to display. See CV for complete talk history.</p>
+        <p class="empty-state" id="past-empty">No past talks match your filter.</p>
     </section>
 
     <section id="cv">
         <h2>Curriculum Vitae</h2>
         <a href="cv.pdf" class="cv-button">Download Full CV (PDF)</a>
-
-        <h3>Selected Papers</h3>
-        <div class="entry">
-            <div class="entry-main">
-                <span class="entry-title">Subject-Dependence in Science: The Argument from Complementarity</span>
-                <div class="entry-detail">Co-authored with <a href="https://hongjooryoo.com">Hong Joo Ryoo</a> · Under review</div>
-            </div>
-        </div>
-        <div class="entry">
-            <div class="entry-main">
-                <span class="entry-title">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</span>
-                <div class="entry-detail">Winner, 2025 Graduate Paper Prize, Indiana Philosophical Association</div>
-            </div>
-        </div>
-
-        <h3>Theses</h3>
-        <div class="entry">
-            <div class="entry-main">
-                <span class="entry-title">Ontologie et Méréologie : une désambiguïsation métalinguistique</span>
-                <div class="entry-detail">Master's Thesis, Sorbonne Université</div>
-            </div>
-            <span class="entry-date">Jun 2025</span>
-        </div>
-        <div class="entry">
-            <div class="entry-main">
-                <span class="entry-title">Modality and Free Will: An Incompatibilist Account of Frankfurt-style Cases</span>
-                <div class="entry-detail">Honors Thesis, Oberlin College</div>
-            </div>
-            <span class="entry-date">Apr 2023</span>
-        </div>
 
         <h3>Affiliations</h3>
         <p style="font-size: 10pt;">American Philosophical Association · American Society for Aesthetics · Aristotelian Society · Philosophy of Time Society · Society for Philosophy of Causation · Southwestern Philosophical Society</p>
