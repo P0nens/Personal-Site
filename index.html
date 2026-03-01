@@ -1,19 +1,827 @@
-<section id="research">
-    <h2>Research</h2>
-    <p>Recently, my research has clustered in three main areas.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julian Lee-Sursin</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Research interest tags */
+        .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 8pt;
+            font-weight: 500;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        
+        .tag-1 {
+            background-color: #e8f4fc;
+            color: #1a5f8a;
+            border: 1px solid #b8d4e8;
+        }
+        
+        .tag-2 {
+            background-color: #fef3e8;
+            color: #8a5a1a;
+            border: 1px solid #e8d0b8;
+        }
+        
+        .tag-3 {
+            background-color: #f3e8fe;
+            color: #5a1a8a;
+            border: 1px solid #d0b8e8;
+        }
+        
+        .tag-L {
+            background-color: #e8fce8;
+            color: #1a8a1a;
+            border: 1px solid #b8e8b8;
+        }
+        
+        .tag-C {
+            background-color: #e8fcf8;
+            color: #1a7a7a;
+            border: 1px solid #b8e8e0;
+        }
+        
+        /* Sort and filter controls */
+        .talks-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f8f8;
+            border-radius: 8px;
+            align-items: center;
+        }
+        
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .control-group label {
+            font-size: 9.5pt;
+            color: var(--muted, #666);
+            font-weight: 500;
+        }
+        
+        .control-group select {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 9.5pt;
+            background: white;
+            cursor: pointer;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 9pt;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-btn:hover {
+            background: #f0f0f0;
+        }
+        
+        .filter-btn.active {
+            background: #333;
+            color: white;
+            border-color: #333;
+        }
+        
+        .filter-btn.tag-1-btn.active {
+            background: #1a5f8a;
+            border-color: #1a5f8a;
+        }
+        
+        .filter-btn.tag-2-btn.active {
+            background: #8a5a1a;
+            border-color: #8a5a1a;
+        }
+        
+        .filter-btn.tag-3-btn.active {
+            background: #5a1a8a;
+            border-color: #5a1a8a;
+        }
+        
+        .filter-btn.tag-L-btn.active {
+            background: #1a8a1a;
+            border-color: #1a8a1a;
+        }
+        
+        .filter-btn.tag-C-btn.active {
+            background: #1a7a7a;
+            border-color: #1a7a7a;
+        }
+        
+        /* Talks sections */
+        .talks-section-header {
+            display: flex;
+            align-items: center;
+            margin: 2rem 0 1rem 0;
+            gap: 1rem;
+        }
+        
+        .talks-section-header h4 {
+            margin: 0;
+            font-size: 11pt;
+            color: #333;
+        }
+        
+        .talks-section-header .line {
+            flex: 1;
+            height: 1px;
+            background: #ddd;
+        }
+        
+        .talks-section-header .count {
+            font-size: 9pt;
+            color: var(--muted, #666);
+            background: #f0f0f0;
+            padding: 2px 10px;
+            border-radius: 10px;
+        }
+        
+        /* Enhanced talks list */
+        .talks-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .talks-list li {
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            background: #fafafa;
+            border-radius: 6px;
+            border-left: 3px solid #ddd;
+            transition: all 0.2s ease;
+        }
+        
+        .talks-list li:hover {
+            background: #f5f5f5;
+            transform: translateX(2px);
+        }
+        
+        .talks-list li.interest-1 {
+            border-left-color: #1a5f8a;
+        }
+        
+        .talks-list li.interest-2 {
+            border-left-color: #8a5a1a;
+        }
+        
+        .talks-list li.interest-3 {
+            border-left-color: #5a1a8a;
+        }
+        
+        .talks-list li.interest-L {
+            border-left-color: #1a8a1a;
+        }
+        
+        .talks-list li.interest-C {
+            border-left-color: #1a7a7a;
+        }
+        
+        .talks-list li.interest-1.interest-2 {
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, #1a5f8a 50%, #8a5a1a 50%) 1;
+        }
+        
+        .talks-list li.interest-1.interest-3 {
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, #1a5f8a 50%, #5a1a8a 50%) 1;
+        }
+        
+        .talks-list li.interest-2.interest-3 {
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, #8a5a1a 50%, #5a1a8a 50%) 1;
+        }
+        
+        .talks-list li.interest-1.interest-2.interest-3 {
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, #1a5f8a 33%, #8a5a1a 33%, #8a5a1a 66%, #5a1a8a 66%) 1;
+        }
+        
+        .talks-list li.interest-1.interest-C {
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, #1a5f8a 50%, #1a7a7a 50%) 1;
+        }
+        
+        .talks-list li.interest-1.interest-L {
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, #1a5f8a 50%, #1a8a1a 50%) 1;
+        }
+        
+        .talks-list li.interest-3.interest-L {
+            border-left: 3px solid;
+            border-image: linear-gradient(to bottom, #5a1a8a 50%, #1a8a1a 50%) 1;
+        }
+        
+        .talks-list .title {
+            display: block;
+            font-weight: 500;
+            color: #222;
+            margin-bottom: 0.25rem;
+        }
+        
+        .talks-list .tags-container {
+            display: inline;
+        }
+        
+        .talks-list .venue {
+            display: block;
+            font-size: 9.5pt;
+            color: var(--muted, #666);
+            margin-bottom: 0.15rem;
+        }
+        
+        .talks-list .coauthor {
+            display: block;
+            font-size: 9pt;
+            color: var(--muted, #666);
+            font-style: italic;
+        }
+        
+        .talks-list .note {
+            display: block;
+            font-size: 9pt;
+            color: #1a5f8a;
+            font-weight: 500;
+        }
+        
+        .talks-list .date {
+            display: block;
+            font-size: 9pt;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+        
+        /* Upcoming talks styling */
+        .upcoming-talks li {
+            background: linear-gradient(135deg, #fafafa 0%, #f0f8ff 100%);
+        }
+        
+        .upcoming-talks li:hover {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8f4fc 100%);
+        }
+        
+        /* Legend */
+        .legend-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            background: #f8f8f8;
+            border-radius: 6px;
+            font-size: 9pt;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+        
+        .legend-color.color-1 {
+            background: #1a5f8a;
+        }
+        
+        .legend-color.color-2 {
+            background: #8a5a1a;
+        }
+        
+        .legend-color.color-3 {
+            background: #5a1a8a;
+        }
+        
+        .legend-color.color-L {
+            background: #1a8a1a;
+        }
+        
+        .legend-color.color-C {
+            background: #1a7a7a;
+        }
+        
+        /* Hidden state */
+        .talks-list li.hidden {
+            display: none;
+        }
+        
+        /* Empty state */
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted, #666);
+            font-style: italic;
+            display: none;
+        }
+        
+        .empty-state.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
 
-    <div class="research-area">
-        <p class="area-label">I. Explanation and Why-Questions</p>
-        <p>The first centers around the fact that explanations are answers to why questions. This area has proven to be an interesting intersection of philosophy of science and metaphysics (on the explanation side), which I studied during my MPhil at La Sorbonne, and language and cognitive science (on the why-questions side), which I am currently studying at the ENS. So far, most of the talks I've given in this area center around the semantics of explanation and why-questions—and some implications of the semantics for the metaphysics of time and for AI.</p>
+    <div class="lang-toggle">
+        <a href="index.html" class="active">EN</a>
+        <a href="fr.html">FR</a>
     </div>
 
-    <div class="research-area">
-        <p class="area-label">II. Philosophy of Computational Neuroscience and AI</p>
-        <p>A second interest of mine involves general questions about the philosophy of computational neuroscience and AI. For instance, I have some thoughts about inferring things about the computational structure of mind from empirical data about brain-model alignment.</p>
+    <header>
+        <h1>Julian Lee-Sursin</h1>
+        <p class="tagline">Research Interests: Explanation, Language, Mind, Fashion</p>
+        <p class="contact">
+            <a href="mailto:jleesur1@jh.edu">jleesur1@jh.edu</a> · 
+            <a href="https://julianleesursin.com">julianleesursin.com</a>
+        </p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#talks">Talks</a>
+        <a href="#cv">CV</a>
+        <a href="#varia">Varia</a>
+    </nav>
+
+    <div class="photo-section">
+        <div class="photo-frame">
+            <img src="images/place_de_la_sorbonne.jpg" alt="Julian Lee-Sursin at Place de la Sorbonne">
+        </div>
     </div>
 
-    <div class="research-area">
-        <p class="area-label">III. Meaning Beyond Language</p>
-        <p>My third main interest is a bit broader, and has to do with the following question: <em>How, generally speaking, can things have meaning?</em> This interest involves exploring how non-linguistic tokens—such as fashion tokens or non-verbal actions—communicate meaning and inhere content.  This research has paired nicely with my more dilettantish interests in fashion and in music (see varia).</p>
-    </div>
-</section>
+    <section id="about">
+        <h2>Academic Appointment</h2>
+        <div class="entry">
+            <div class="entry-main">
+                <span class="entry-title">Visiting Scholar</span>, Johns Hopkins University
+            </div>
+            <span class="entry-date">2025–2026</span>
+        </div>
+
+        <h2>Education</h2>
+        <div class="entry">
+            <div class="entry-main">
+                <span class="entry-title">École Normale Supérieure</span>, MS in Cognitive Science
+            </div>
+            <span class="entry-date">2024–present</span>
+        </div>
+        <div class="entry">
+            <div class="entry-main">
+                <span class="entry-title">Sorbonne Université</span>, MPhil
+                <div class="entry-detail">Philosophy of Science, Knowledge and Mind, <em>mention très bien</em></div>
+            </div>
+            <span class="entry-date">2023–2025</span>
+        </div>
+        <div class="entry">
+            <div class="entry-main">
+                <span class="entry-title">Oberlin College</span>, BA, Honors in Philosophy
+            </div>
+            <span class="entry-date">2020–2023</span>
+        </div>
+    </section>
+
+    <section id="research">
+        <h2>Research</h2>
+        <p>Recently, my research has clustered in three main areas.</p>
+
+        <div class="research-area">
+            <p class="area-label">I. Explanation and Why-Questions</p>
+            <p>The first centers around the fact that explanations are answers to why questions. This area has proven to be an interesting intersection of philosophy of science and metaphysics (on the explanation side), which I studied during my MPhil at La Sorbonne, and language and cognitive science (on the why-questions side), which I am currently studying at the ENS. So far, most of the talks I've given in this area center around the semantics of explanation and why-questions—and some implications of the semantics for the metaphysics of time and for AI.</p>
+        </div>
+
+        <div class="research-area">
+            <p class="area-label">II. Philosophy of Computational Neuroscience and AI</p>
+            <p>A second interest of mine involves general questions about the philosophy of computational neuroscience and AI. For instance, I have some thoughts about inferring things about the computational structure of mind from empirical data about brain-model alignment.</p>
+        </div>
+
+        <div class="research-area">
+            <p class="area-label">III. Meaning Beyond Language</p>
+            <p>My third main interest is a bit broader, and has to do with the following question: <em>How, generally speaking, can things have meaning?</em> This interest involves exploring how non-linguistic tokens—such as fashion tokens or non-verbal actions—communicate meaning and inhere content. So far, this has taken the form of figuring out how fashion inheres meaning and communicates. This research has paired nicely with my more dilettantish interests in fashion and in music (see varia).</p>
+        </div>
+    </section>
+
+    <section id="talks">
+        <h2>Presentations</h2>
+        <p class="legend">* = abstract refereed · ** = paper refereed</p>
+
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/V7v8WOq3N6E?start=8561" 
+                title="Fashion and the Jacksonian Mode - Institut Français de la Mode 2025"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        <p class="video-caption">Fashion and the Jacksonian Mode: Intentionality Beyond Language — Symposium, Institut Français de la Mode, Paris (Nov 2025)</p>
+
+        <h4>Other Selected Talks</h4>
+        <p style="font-size: 9.5pt; color: var(--muted); margin-top: -0.5rem; margin-bottom: 1.25rem;">(see CV for complete list of talks)</p>
+        
+        <!-- Legend for research interests -->
+        <div class="legend-container">
+            <div class="legend-item">
+                <div class="legend-color color-1"></div>
+                <span>I. Explanation & Why-Questions</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-2"></div>
+                <span>II. Phil. of Comp. Neuroscience & AI</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-3"></div>
+                <span>III. Meaning Beyond Language</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-L"></div>
+                <span>L. Language & Semantics</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color color-C"></div>
+                <span>C. CogSci & Epistemology</span>
+            </div>
+        </div>
+
+        <!-- Sort and filter controls -->
+        <div class="talks-controls">
+            <div class="control-group">
+                <label for="sort-select">Sort by:</label>
+                <select id="sort-select">
+                    <option value="date-desc">Date (newest first)</option>
+                    <option value="date-asc">Date (oldest first)</option>
+                    <option value="interest">Research Interest</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Filter by interest:</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn tag-1-btn" data-filter="1">I. Explanation</button>
+                    <button class="filter-btn tag-2-btn" data-filter="2">II. AI/Neuroscience</button>
+                    <button class="filter-btn tag-3-btn" data-filter="3">III. Meaning</button>
+                    <button class="filter-btn tag-L-btn" data-filter="L">L. Language</button>
+                    <button class="filter-btn tag-C-btn" data-filter="C">C. CogSci</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Talks (after March 1, 2025) -->
+        <div class="talks-section-header">
+            <h4>📅 Upcoming Talks</h4>
+            <div class="line"></div>
+            <span class="count" id="upcoming-count">0</span>
+        </div>
+        
+        <ul class="talks-list upcoming-talks" id="upcoming-talks">
+            <li data-date="2026-06-15" data-interests="1,C" class="interest-1 interest-C">
+                <span class="title">
+                    Towards an Explanatory Cognitive Model for Blackwell Informativeness<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-C">C</span>
+                    </span>
+                </span>
+                <span class="venue">10th International Conference on Model-Based Reasoning, Rome, Italy</span>
+                <span class="date">Jun 15–17, 2026</span>
+            </li>
+            <li data-date="2026-04-24" data-interests="1,2" class="interest-1 interest-2">
+                <span class="title">
+                    Do AI Agents Meet the Epistemic Norms for Explanation? An Erotetic Approach<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-2">II</span>
+                    </span>
+                </span>
+                <span class="venue">Inaugural Humanities of AI Workshop, Johns Hopkins University, Baltimore, MD</span>
+                <span class="date">Apr 24–26, 2026</span>
+            </li>
+            <li data-date="2026-04-16" data-interests="2" class="interest-2">
+                <span class="title">
+                    Curb Your (Brain-Model Alignment) Enthusiasm<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-2">II</span>
+                    </span>
+                </span>
+                <span class="coauthor">Co-authored with Arnold Fleishman</span>
+                <span class="venue">AI and Philosophy, New Orleans, LA</span>
+                <span class="date">Apr 16, 2026</span>
+            </li>
+            <li data-date="2026-04-10" data-interests="3" class="interest-3">
+                <span class="title">
+                    On Fashion's Perceptual Meaning<sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-3">III</span>
+                    </span>
+                </span>
+                <span class="venue">American Society for Aesthetics, Eastern Division, Philadelphia, PA</span>
+                <span class="date">Apr 10–11, 2026</span>
+            </li>
+            <li data-date="2026-04-04" data-interests="3,L" class="interest-3 interest-L">
+                <span class="title">
+                    A Supralinguistic Account of <em>parrhesia</em><sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-3">III</span>
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue">18th Annual Suncoast Graduate Philosophy Conference, Tampa, FL</span>
+                <span class="date">Apr 4, 2026</span>
+            </li>
+            <li data-date="2026-04-04" data-interests="1,L" class="interest-1 interest-L">
+                <span class="title">
+                    A Semantic Argument Against Radical Cognitivism<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-L">L</span>
+                    </span>
+                </span>
+                <span class="venue">UF Graduate Philosophy Conference, Gainesville, FL</span>
+                <span class="date">Apr 4, 2026</span>
+            </li>
+            <li data-date="2026-02-18" data-interests="1" class="interest-1">
+                <span class="title">
+                    Why Presentism Precludes Explanation<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                    </span>
+                </span>
+                <span class="venue">Central APA, Philosophy of Time Society, Chicago, IL</span>
+                <span class="date">Feb 18, 2026</span>
+            </li>
+            <li data-date="2026-01-07" data-interests="1" class="interest-1">
+                <span class="title">
+                    How Causation Explains: A Semantic Inquiry<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                    </span>
+                </span>
+                <span class="venue">Eastern APA, Society for Philosophy of Causation, Baltimore, MD</span>
+                <span class="date">Jan 7, 2026</span>
+            </li>
+            <li data-date="2025-11-08" data-interests="1" class="interest-1">
+                <span class="title">
+                    Semantics for Explanation<sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                    </span>
+                </span>
+                <span class="venue">Illinois Philosophical Association, Charleston, IL</span>
+                <span class="date">Nov 8, 2025</span>
+            </li>
+            <li data-date="2025-11-01" data-interests="1" class="interest-1">
+                <span class="title">
+                    Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?<sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                    </span>
+                </span>
+                <span class="venue">Indiana Philosophical Association, Bloomington, IN</span>
+                <span class="note">Winner, 2025 Graduate Paper Prize</span>
+                <span class="date">Nov 1, 2025</span>
+            </li>
+            <li data-date="2025-10-24" data-interests="1" class="interest-1">
+                <span class="title">
+                    Semantics for Explanation<sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                    </span>
+                </span>
+                <span class="venue">24th University of Toronto Graduate Conference, Toronto, Canada</span>
+                <span class="date">Oct 24, 2025</span>
+            </li>
+            <li data-date="2025-10-16" data-interests="1" class="interest-1">
+                <span class="title">
+                    Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                    </span>
+                </span>
+                <span class="venue">CREPH: Mind Conference, Liège, Belgium</span>
+                <span class="date">Oct 16, 2025</span>
+            </li>
+            <li data-date="2025-10-09" data-interests="1,2" class="interest-1 interest-2">
+                <span class="title">
+                    Do AI Agents Meet the Epistemic Norms for Explanation?<sup>*</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                        <span class="tag tag-2">II</span>
+                    </span>
+                </span>
+                <span class="venue">XVI International Ontology Congress, Basque Country, Spain</span>
+                <span class="date">Oct 9, 2025</span>
+            </li>
+            <li data-date="2025-09-05" data-interests="1" class="interest-1">
+                <span class="title">
+                    The Special Questions Dispute<sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                    </span>
+                </span>
+                <span class="venue">SOPhiA, Salzburg, Austria</span>
+                <span class="date">Sep 5, 2025</span>
+            </li>
+            <li data-date="2025-07-13" data-interests="1" class="interest-1">
+                <span class="title">
+                    The Special Questions Dispute<sup>**</sup>
+                    <span class="tags-container">
+                        <span class="tag tag-1">I</span>
+                    </span>
+                </span>
+                <span class="venue">99th Joint Session of the Aristotelian and Mind Societies, Glasgow, Scotland</span>
+                <span class="date">Jul 13, 2025</span>
+            </li>
+        </ul>
+        
+        <p class="empty-state" id="upcoming-empty">No upcoming talks match your filter.</p>
+
+        <!-- Past Talks (before March 1, 2025) -->
+        <div class="talks-section-header">
+            <h4>📁 Past Talks</h4>
+            <div class="line"></div>
+            <span class="count" id="past-count">0</span>
+        </div>
+        
+        <ul class="talks-list past-talks" id="past-talks">
+            <!-- No past talks from the provided list -->
+        </ul>
+        
+        <p class="empty-state visible" id="past-empty">No past talks to display. See CV for complete talk history.</p>
+    </section>
+
+    <section id="cv">
+        <h2>Curriculum Vitae</h2>
+        <a href="cv.pdf" class="cv-button">Download Full CV (PDF)</a>
+
+        <h3>Selected Papers</h3>
+        <div class="entry">
+            <div class="entry-main">
+                <span class="entry-title">Subject-Dependence in Science: The Argument from Complementarity</span>
+                <div class="entry-detail">Co-authored with <a href="https://hongjooryoo.com">Hong Joo Ryoo</a> · Under review</div>
+            </div>
+        </div>
+        <div class="entry">
+            <div class="entry-main">
+                <span class="entry-title">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</span>
+                <div class="entry-detail">Winner, 2025 Graduate Paper Prize, Indiana Philosophical Association</div>
+            </div>
+        </div>
+
+        <h3>Theses</h3>
+        <div class="entry">
+            <div class="entry-main">
+                <span class="entry-title">Ontologie et Méréologie : une désambiguïsation métalinguistique</span>
+                <div class="entry-detail">Master's Thesis, Sorbonne Université</div>
+            </div>
+            <span class="entry-date">Jun 2025</span>
+        </div>
+        <div class="entry">
+            <div class="entry-main">
+                <span class="entry-title">Modality and Free Will: An Incompatibilist Account of Frankfurt-style Cases</span>
+                <div class="entry-detail">Honors Thesis, Oberlin College</div>
+            </div>
+            <span class="entry-date">Apr 2023</span>
+        </div>
+
+        <h3>Affiliations</h3>
+        <p style="font-size: 10pt;">American Philosophical Association · American Society for Aesthetics · Aristotelian Society · Philosophy of Time Society · Society for Philosophy of Causation · Southwestern Philosophical Society</p>
+    </section>
+
+    <section id="varia">
+        <h2>Varia</h2>
+        <p>Outside of philosophy and cognitive science, I have a few dilettantish interests.</p>
+        <div class="varia-list">
+            <div class="varia-item">
+                <strong>Fashion:</strong> Performed in Paris Fashion Week (Duranimal) and the Saut Hermès Dinner (Mar 2025).
+            </div>
+            <div class="varia-item">
+                <strong>Music:</strong> Classical bass, currently studying at Peabody Preparatory. Notable concerts:
+                <ul>
+                    <li>Verdi's <em>Macbeth</em> with Plácido Domingo, Salle Gaveau (Apr 2025)</li>
+                    <li>Rossini's <em>Le Comte Ory</em>, Théâtre des Champs-Élysées (Nov 2024)</li>
+                    <li>Bastille Day Parade ft. Macron and the Olympic torch (Jul 2024)</li>
+                    <li>Royal Philharmonic Orchestra, dir. Joe Hisaishi, La Défense Arena (Apr 2024)</li>
+                    <li>Mozart's Mass in C minor, Les Invalides (Dec 2023)</li>
+                    <li>Regular concerts at the Philharmonie de Paris</li>
+                </ul>
+            </div>
+            <div class="varia-item">
+                <strong>Sports:</strong> Chess (1742 FIDE) · American Football (NCAA D3, Oberlin, DE) · Tennis (HS Varsity)
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Julian Lee-Sursin · jleesur1@jh.edu · © 2025</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sortSelect = document.getElementById('sort-select');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const upcomingList = document.getElementById('upcoming-talks');
+            const pastList = document.getElementById('past-talks');
+            const upcomingCount = document.getElementById('upcoming-count');
+            const pastCount = document.getElementById('past-count');
+            const upcomingEmpty = document.getElementById('upcoming-empty');
+            const pastEmpty = document.getElementById('past-empty');
+            
+            let currentFilter = 'all';
+            
+            function updateCounts() {
+                const visibleUpcoming = upcomingList.querySelectorAll('li:not(.hidden)').length;
+                const visiblePast = pastList.querySelectorAll('li:not(.hidden)').length;
+                
+                upcomingCount.textContent = visibleUpcoming;
+                pastCount.textContent = visiblePast;
+                
+                upcomingEmpty.classList.toggle('visible', visibleUpcoming === 0);
+                pastEmpty.classList.toggle('visible', visiblePast === 0);
+            }
+            
+            function filterTalks(filter) {
+                currentFilter = filter;
+                const allTalks = document.querySelectorAll('.talks-list li');
+                
+                allTalks.forEach(talk => {
+                    if (filter === 'all') {
+                        talk.classList.remove('hidden');
+                    } else {
+                        const interests = talk.dataset.interests.split(',');
+                        if (interests.includes(filter)) {
+                            talk.classList.remove('hidden');
+                        } else {
+                            talk.classList.add('hidden');
+                        }
+                    }
+                });
+                
+                updateCounts();
+            }
+            
+            function sortTalks(sortType) {
+                [upcomingList, pastList].forEach(list => {
+                    const items = Array.from(list.querySelectorAll('li'));
+                    
+                    items.sort((a, b) => {
+                        if (sortType === 'date-desc') {
+                            return new Date(b.dataset.date) - new Date(a.dataset.date);
+                        } else if (sortType === 'date-asc') {
+                            return new Date(a.dataset.date) - new Date(b.dataset.date);
+                        } else if (sortType === 'interest') {
+                            const aInterests = a.dataset.interests.split(',').sort().join(',');
+                            const bInterests = b.dataset.interests.split(',').sort().join(',');
+                            if (aInterests === bInterests) {
+                                return new Date(b.dataset.date) - new Date(a.dataset.date);
+                            }
+                            return aInterests.localeCompare(bInterests);
+                        }
+                        return 0;
+                    });
+                    
+                    items.forEach(item => list.appendChild(item));
+                });
+            }
+            
+            sortSelect.addEventListener('change', (e) => {
+                sortTalks(e.target.value);
+            });
+            
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterTalks(btn.dataset.filter);
+                });
+            });
+            
+            updateCounts();
+        });
+    </script>
+
+</body>
+</html>
