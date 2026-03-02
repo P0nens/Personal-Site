@@ -141,6 +141,15 @@ header h1 {
     border: 1px solid var(--border);
     border-radius: 12px;
     text-align: center;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.carousel-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .card-date {
@@ -230,30 +239,81 @@ header h1 {
     transform: scale(1.2);
 }
 
-/* Contact */
+/* ================================
+   CONTACT SECTION
+   ================================ */
+
 .contact-section {
     margin-top: 2rem;
+    padding: 1.25rem;
+    background: #f8f8f8;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.contact-section p {
+    font-size: 10pt;
+    color: var(--muted);
+    margin: 0;
+}
+
+.contact-section a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.contact-section a:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   FOOTER STYLES
+   ================================ */
+
+footer {
+    margin-top: 3rem;
     padding-top: 1.5rem;
     border-top: 1px solid var(--border);
     text-align: center;
 }
 
-.contact-section a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 10pt;
+footer p {
+    font-size: 9pt;
+    color: var(--light);
+    margin-top: 0.75rem;
 }
 
-.contact-section a:hover {
+footer a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+footer a:hover {
     color: var(--accent);
 }
 
-/* Footer */
-footer {
-    margin-top: 3rem;
-    text-align: center;
-    font-size: 9pt;
-    color: var(--light);
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.social-icons a {
+    color: var(--muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.social-icons svg {
+    width: 22px;
+    height: 22px;
 }
 
 /* ================================
@@ -277,6 +337,11 @@ nav a {
 
 nav a:hover {
     color: var(--text);
+}
+
+nav a.nav-active {
+    color: var(--text);
+    font-weight: 600;
 }
 
 /* Back link */
@@ -730,13 +795,16 @@ section h4 {
     display: block;
 }
 
-/* Varia section */
+/* ================================
+   VARIA PAGE STYLES
+   ================================ */
+
 .varia-list {
     font-size: 10.5pt;
 }
 
 .varia-item {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .varia-item ul {
@@ -754,7 +822,10 @@ section h4 {
     color: var(--muted);
 }
 
-/* Responsive */
+/* ================================
+   RESPONSIVE
+   ================================ */
+
 @media (max-width: 600px) {
     body {
         padding: 2rem 1rem;
@@ -791,5 +862,13 @@ section h4 {
     .legend-container {
         flex-direction: column;
         gap: 0.5rem;
+    }
+    
+    .social-icons {
+        gap: 1rem;
+    }
+    
+    nav a {
+        margin: 0 0.5rem;
     }
 }
