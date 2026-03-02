@@ -805,21 +805,44 @@ section h4 {
    VARIA PAGE STYLES
    ================================ */
 
-.varia-list {
+#varia h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+#varia p {
+    margin-bottom: 1rem;
+}
+
+#varia a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+#varia a:hover {
+    text-decoration: underline;
+}
+
+ul.varia-list {
+    margin: 0.5rem 0 1.5rem 1.25rem;
     font-size: 10.5pt;
 }
 
-.varia-item {
-    margin-bottom: 1.5rem;
+ul.varia-list li {
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
 }
 
-.varia-item ul {
-    margin-top: 0.5rem;
-    margin-left: 1.5rem;
+ul.varia-list a {
+    color: var(--accent);
+    text-decoration: none;
 }
 
-.varia-item li {
-    margin-bottom: 0.25rem;
+ul.varia-list a:hover {
+    text-decoration: underline;
 }
 
 /* Affiliations */
