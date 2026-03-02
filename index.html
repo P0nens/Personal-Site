@@ -24,39 +24,58 @@
     </div>
 
     <section class="intro">
-        <p>Hi! I'm Julian. I do philosophy and cognitive science (mostly). I'm currently a visiting scholar at <a href="https://philosophy.jhu.edu">Johns Hopkins</a>, finishing an MS in cognitive science at the <a href="https://cogmaster.ens.psl.eu/en">ENS</a>, and just completed an MPhil at <a href="https://www.sorbonne-universite.fr">La Sorbonne</a>.</p>
+        <p>Hi! I'm Julian. I do philosophy and cognitive science (mostly). I'm currently a visiting scholar at <a href="https://philosophy.jhu.edu">Johns Hopkins</a> and finishing an MS in cognitive science at the <a href="https://cogmaster.ens.psl.eu/en">ENS</a>. I have an MPhil from <a href="https://www.sorbonne-universite.fr">La Sorbonne</a>.</p>
         
-        <p>My research focuses on <strong>explanation</strong>, <strong>language</strong>, and <strong>meaning</strong>—including how non-linguistic things like fashion can communicate. I also think about AI and computational neuroscience.</p>
+        <p>My research focuses on explanation, language, and superlinguistic meaning (e.g. fashion and non-verbal actions).  I also think about AI and computational neuroscience.  You can learn more about my research by attending one of my upcoming talks:</p>
         
-        <details class="upcoming-dropdown">
-            <summary>Upcoming talks</summary>
-            <ul>
-                <li>
-                    <span class="talk-title">Towards an Explanatory Cognitive Model for Blackwell Informativeness</span>
-                    <span class="talk-info">10th International Conference on Model-Based Reasoning, Rome · Jun 15–17, 2026</span>
-                </li>
-                <li>
-                    <span class="talk-title">Do AI Agents Meet the Epistemic Norms for Explanation?</span>
-                    <span class="talk-info">Humanities of AI Workshop, Johns Hopkins · Apr 24–26, 2026</span>
-                </li>
-                <li>
-                    <span class="talk-title">Curb Your (Brain-Model Alignment) Enthusiasm</span>
-                    <span class="talk-info">AI and Philosophy, New Orleans · Apr 16, 2026</span>
-                </li>
-                <li>
-                    <span class="talk-title">On Fashion's Perceptual Meaning</span>
-                    <span class="talk-info">American Society for Aesthetics, Philadelphia · Apr 10–11, 2026</span>
-                </li>
-                <li>
-                    <span class="talk-title">A Supralinguistic Account of <em>parrhesia</em></span>
-                    <span class="talk-info">Suncoast Graduate Philosophy Conference, Tampa · Apr 4, 2026</span>
-                </li>
-                <li>
-                    <span class="talk-title">A Semantic Argument Against Radical Cognitivism</span>
-                    <span class="talk-info">UF Graduate Philosophy Conference, Gainesville · Apr 4, 2026</span>
-                </li>
-            </ul>
-        </details>
+        <div class="upcoming-section">
+            <h3>Upcoming talks</h3>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" aria-label="Previous talk">‹</button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <div class="carousel-card">
+                            <div class="card-date">Jun 15–17, 2026</div>
+                            <div class="card-title">Towards an Explanatory Cognitive Model for Blackwell Informativeness</div>
+                            <div class="card-venue">10th International Conference on Model-Based Reasoning</div>
+                            <div class="card-location">📍 Rome, Italy</div>
+                        </div>
+                        <div class="carousel-card">
+                            <div class="card-date">Apr 24–26, 2026</div>
+                            <div class="card-title">Do AI Agents Meet the Epistemic Norms for Explanation?</div>
+                            <div class="card-venue">Humanities of AI Workshop, Johns Hopkins</div>
+                            <div class="card-location">📍 Baltimore, MD</div>
+                        </div>
+                        <div class="carousel-card">
+                            <div class="card-date">Apr 16, 2026</div>
+                            <div class="card-title">Curb Your (Brain-Model Alignment) Enthusiasm</div>
+                            <div class="card-venue">AI and Philosophy</div>
+                            <div class="card-location">📍 New Orleans, LA</div>
+                        </div>
+                        <div class="carousel-card">
+                            <div class="card-date">Apr 10–11, 2026</div>
+                            <div class="card-title">On Fashion's Perceptual Meaning</div>
+                            <div class="card-venue">American Society for Aesthetics, Eastern</div>
+                            <div class="card-location">📍 Philadelphia, PA</div>
+                        </div>
+                        <div class="carousel-card">
+                            <div class="card-date">Apr 4, 2026</div>
+                            <div class="card-title">A Supralinguistic Account of <em>parrhesia</em></div>
+                            <div class="card-venue">Suncoast Graduate Philosophy Conference</div>
+                            <div class="card-location">📍 Tampa, FL</div>
+                        </div>
+                        <div class="carousel-card">
+                            <div class="card-date">Apr 4, 2026</div>
+                            <div class="card-title">A Semantic Argument Against Radical Cognitivism</div>
+                            <div class="card-venue">UF Graduate Philosophy Conference</div>
+                            <div class="card-location">📍 Gainesville, FL</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-btn next" aria-label="Next talk">›</button>
+            </div>
+            <div class="carousel-dots"></div>
+        </div>
         
         <p>→ <a href="research.html">Research & Talks</a></p>
         <p>→ <a href="cv.pdf">CV (PDF)</a></p>
@@ -69,6 +88,97 @@
     <footer>
         <p>© 2025</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.carousel-track');
+            const cards = document.querySelectorAll('.carousel-card');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const dotsContainer = document.querySelector('.carousel-dots');
+            
+            let currentIndex = 0;
+            const totalCards = cards.length;
+            
+            // Create dots
+            cards.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.setAttribute('aria-label', `Go to talk ${index + 1}`);
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            
+            const dots = document.querySelectorAll('.dot');
+            
+            function updateCarousel() {
+                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+                
+                // Update button states
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === totalCards - 1;
+            }
+            
+            function goToSlide(index) {
+                currentIndex = index;
+                updateCarousel();
+            }
+            
+            function nextSlide() {
+                if (currentIndex < totalCards - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            }
+            
+            function prevSlide() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            }
+            
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === 'ArrowRight') nextSlide();
+            });
+            
+            // Touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (diff > swipeThreshold) {
+                    nextSlide();
+                } else if (diff < -swipeThreshold) {
+                    prevSlide();
+                }
+            }
+            
+            // Initial state
+            updateCarousel();
+        });
+    </script>
 
 </body>
 </html>
