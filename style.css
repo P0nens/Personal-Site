@@ -34,13 +34,24 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    
-    /* Background image on body */
+    position: relative;
+}
+
+/* Background image with opacity */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-image: url('images/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    opacity: 0.5;
+    z-index: -1;
 }
 
 /* Content wrapper - FULLY OPAQUE dark background */
@@ -49,7 +60,7 @@ body {
     margin: 0 auto;
     padding: 3rem 1.5rem;
     min-height: 100vh;
-    background-color: #1a1a1a;  /* Solid dark - NOT transparent */
+    background-color: #1a1a1a;
     position: relative;
 }
 
