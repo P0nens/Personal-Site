@@ -1,5 +1,5 @@
 /* ================================
-   ROOT VARIABLES & THEME
+   ROOT VARIABLES
    ================================ */
 
 :root {
@@ -14,20 +14,6 @@
     --card-hover: #f5f5f5;
     --card-gradient: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
     --controls-bg: #f8f8f8;
-}
-
-[data-theme="dark"] {
-    --text: #e8e8e8;
-    --muted: #a0a0a0;
-    --light: #777;
-    --border: #444;
-    --bg: #1a1a1a;
-    --bg-translucent: rgba(26, 26, 26, 0.92);
-    --accent: #d4646f; /* Lighter burgundy for dark mode */
-    --card-bg: #252525;
-    --card-hover: #2a2a2a;
-    --card-gradient: linear-gradient(135deg, #252525 0%, #2a2f35 100%);
-    --controls-bg: #252525;
 }
 
 /* ================================
@@ -68,55 +54,12 @@ body {
     position: relative;
 }
 
-/* More transparent on larger screens to show more background */
 @media (min-width: 900px) {
     .page-wrapper {
         background-color: rgba(255, 255, 255, 0.88);
         box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
     }
-    
-    [data-theme="dark"] .page-wrapper {
-        background-color: rgba(26, 26, 26, 0.88);
-        box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-    }
 }
-
-/* ================================
-   THEME TOGGLE
-   ================================ */
-
-.theme-toggle {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    z-index: 1000;
-}
-
-.theme-toggle button {
-    background: var(--bg-translucent);
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s ease;
-}
-
-.theme-toggle button:hover {
-    background: var(--card-hover);
-    transform: scale(1.1);
-}
-
-/* Hide sun/moon based on theme */
-.theme-toggle .sun { display: none; }
-.theme-toggle .moon { display: block; }
-
-[data-theme="dark"] .theme-toggle .sun { display: block; }
-[data-theme="dark"] .theme-toggle .moon { display: none; }
 
 /* ================================
    LANGUAGE TOGGLE
@@ -189,18 +132,9 @@ header h1 {
 }
 
 /* ================================
-   INTRO / GENERAL LINKS
+   GENERAL LINKS
    ================================ */
 
-.intro {
-    text-align: left;
-}
-
-.intro p {
-    margin-bottom: 1rem;
-}
-
-/* All links use CV burgundy color */
 a {
     color: var(--accent);
     text-decoration: none;
@@ -209,6 +143,18 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+/* ================================
+   INTRO
+   ================================ */
+
+.intro {
+    text-align: left;
+}
+
+.intro p {
+    margin-bottom: 1rem;
 }
 
 /* ================================
@@ -571,37 +517,6 @@ section h4 {
     background-color: #e8fcf8;
     color: #1a7a7a;
     border: 1px solid #b8e8e0;
-}
-
-/* Dark mode tag adjustments */
-[data-theme="dark"] .tag-1 {
-    background-color: #1a3a4a;
-    color: #7ab8e0;
-    border-color: #2a5a7a;
-}
-
-[data-theme="dark"] .tag-2 {
-    background-color: #4a3a1a;
-    color: #e0b87a;
-    border-color: #7a5a2a;
-}
-
-[data-theme="dark"] .tag-3 {
-    background-color: #3a1a4a;
-    color: #c07ae0;
-    border-color: #5a2a7a;
-}
-
-[data-theme="dark"] .tag-L {
-    background-color: #1a4a1a;
-    color: #7ae07a;
-    border-color: #2a7a2a;
-}
-
-[data-theme="dark"] .tag-C {
-    background-color: #1a4a4a;
-    color: #7ae0d0;
-    border-color: #2a7a70;
 }
 
 /* ================================
@@ -995,11 +910,5 @@ ul.varia-list li {
     
     nav a {
         margin: 0 0.5rem;
-    }
-    
-    .theme-toggle {
-        position: absolute;
-        top: 0.5rem;
-        left: 0.5rem;
     }
 }
