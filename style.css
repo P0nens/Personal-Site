@@ -1,11 +1,38 @@
+/* ================================
+   ROOT VARIABLES & THEME
+   ================================ */
+
 :root {
     --text: #222;
     --muted: #666;
     --light: #999;
     --border: #ddd;
     --bg: #fff;
-    --accent: #1a5f8a;
+    --bg-translucent: rgba(255, 255, 255, 0.92);
+    --accent: #8b2332; /* Burgundy/maroon - CV style */
+    --card-bg: #fafafa;
+    --card-hover: #f5f5f5;
+    --card-gradient: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+    --controls-bg: #f8f8f8;
 }
+
+[data-theme="dark"] {
+    --text: #e8e8e8;
+    --muted: #a0a0a0;
+    --light: #777;
+    --border: #444;
+    --bg: #1a1a1a;
+    --bg-translucent: rgba(26, 26, 26, 0.92);
+    --accent: #d4646f; /* Lighter burgundy for dark mode */
+    --card-bg: #252525;
+    --card-hover: #2a2a2a;
+    --card-gradient: linear-gradient(135deg, #252525 0%, #2a2f35 100%);
+    --controls-bg: #252525;
+}
+
+/* ================================
+   BASE STYLES
+   ================================ */
 
 * {
     margin: 0;
@@ -18,13 +45,83 @@ body {
     font-size: 11pt;
     line-height: 1.6;
     color: var(--text);
-    background: var(--bg);
+    background-color: var(--bg);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+    /* Background image */
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* Content wrapper - sits on top of background */
+.page-wrapper {
     max-width: 600px;
     margin: 0 auto;
     padding: 3rem 1.5rem;
+    min-height: 100vh;
+    background-color: var(--bg-translucent);
+    position: relative;
 }
 
-/* Language toggle */
+/* More transparent on larger screens to show more background */
+@media (min-width: 900px) {
+    .page-wrapper {
+        background-color: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    [data-theme="dark"] .page-wrapper {
+        background-color: rgba(26, 26, 26, 0.88);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* ================================
+   THEME TOGGLE
+   ================================ */
+
+.theme-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+}
+
+.theme-toggle button {
+    background: var(--bg-translucent);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle button:hover {
+    background: var(--card-hover);
+    transform: scale(1.1);
+}
+
+/* Hide sun/moon based on theme */
+.theme-toggle .sun { display: none; }
+.theme-toggle .moon { display: block; }
+
+[data-theme="dark"] .theme-toggle .sun { display: block; }
+[data-theme="dark"] .theme-toggle .moon { display: none; }
+
+/* ================================
+   LANGUAGE TOGGLE
+   ================================ */
+
 .lang-toggle {
     position: absolute;
     top: 1rem;
@@ -47,7 +144,10 @@ body {
     font-weight: 600;
 }
 
-/* Header */
+/* ================================
+   HEADER
+   ================================ */
+
 header {
     text-align: center;
     margin-bottom: 2rem;
@@ -59,7 +159,10 @@ header h1 {
     letter-spacing: 0.5px;
 }
 
-/* Photo */
+/* ================================
+   PHOTO
+   ================================ */
+
 .photo-section {
     display: flex;
     justify-content: center;
@@ -67,8 +170,8 @@ header h1 {
 }
 
 .photo-frame {
-    width: 350px;    /* was 180px */
-    height: 350px;   /* was 180px */
+    width: 350px;
+    height: 350px;
     overflow: hidden;
     border: 3px solid var(--border);
     border-radius: 4px;
@@ -80,13 +183,15 @@ header h1 {
     object-fit: cover;
 }
 
-/* Smaller photo for subpages */
 .photo-frame.small {
-    width: 250px;    /* was 120px */
-    height: 250px;   /* was 120px */
+    width: 250px;
+    height: 250px;
 }
 
-/* Intro section */
+/* ================================
+   INTRO / GENERAL LINKS
+   ================================ */
+
 .intro {
     text-align: left;
 }
@@ -95,17 +200,19 @@ header h1 {
     margin-bottom: 1rem;
 }
 
-.intro a {
+/* All links use CV burgundy color */
+a {
     color: var(--accent);
     text-decoration: none;
+    transition: color 0.2s ease;
 }
 
-.intro a:hover {
+a:hover {
     text-decoration: underline;
 }
 
 /* ================================
-   CAROUSEL STYLES
+   CAROUSEL
    ================================ */
 
 .upcoming-section {
@@ -143,7 +250,7 @@ header h1 {
 .carousel-card {
     min-width: 100%;
     padding: 1.5rem;
-    background: linear-gradient(135deg, #f8fafc 0%, #eef2f7 100%);
+    background: var(--card-gradient);
     border: 1px solid var(--border);
     border-radius: 12px;
     text-align: center;
@@ -156,6 +263,7 @@ header h1 {
 a.carousel-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
 }
 
 .card-date {
@@ -194,7 +302,7 @@ a.carousel-card:hover {
     width: 36px;
     height: 36px;
     border: 1px solid var(--border);
-    background: white;
+    background: var(--bg);
     border-radius: 50%;
     font-size: 18px;
     color: var(--muted);
@@ -252,7 +360,7 @@ a.carousel-card:hover {
 .contact-section {
     margin-top: 2rem;
     padding: 1.25rem;
-    background: #f8f8f8;
+    background: var(--controls-bg);
     border-radius: 8px;
     text-align: center;
 }
@@ -263,17 +371,8 @@ a.carousel-card:hover {
     margin: 0;
 }
 
-.contact-section a {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-.contact-section a:hover {
-    text-decoration: underline;
-}
-
 /* ================================
-   FOOTER STYLES
+   FOOTER
    ================================ */
 
 footer {
@@ -287,15 +386,6 @@ footer p {
     font-size: 9pt;
     color: var(--light);
     margin-top: 0.75rem;
-}
-
-footer a {
-    color: var(--muted);
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: var(--accent);
 }
 
 .social-icons {
@@ -315,6 +405,7 @@ footer a:hover {
 .social-icons a:hover {
     color: var(--accent);
     transform: translateY(-2px);
+    text-decoration: none;
 }
 
 .social-icons svg {
@@ -323,10 +414,9 @@ footer a:hover {
 }
 
 /* ================================
-   RESEARCH PAGE STYLES
+   NAVIGATION
    ================================ */
 
-/* Navigation for research page */
 nav {
     text-align: center;
     margin-bottom: 2rem;
@@ -350,7 +440,6 @@ nav a.nav-active {
     font-weight: 600;
 }
 
-/* Back link */
 .back-link {
     display: inline-block;
     margin-bottom: 2rem;
@@ -363,7 +452,10 @@ nav a.nav-active {
     color: var(--accent);
 }
 
-/* Section headers */
+/* ================================
+   SECTIONS
+   ================================ */
+
 section h2 {
     font-size: 1.1rem;
     font-weight: 600;
@@ -437,7 +529,10 @@ section h4 {
     margin-bottom: 1rem;
 }
 
-/* Research interest tags */
+/* ================================
+   RESEARCH INTEREST TAGS
+   ================================ */
+
 .tag {
     display: inline-block;
     padding: 2px 8px;
@@ -478,14 +573,48 @@ section h4 {
     border: 1px solid #b8e8e0;
 }
 
-/* Sort and filter controls */
+/* Dark mode tag adjustments */
+[data-theme="dark"] .tag-1 {
+    background-color: #1a3a4a;
+    color: #7ab8e0;
+    border-color: #2a5a7a;
+}
+
+[data-theme="dark"] .tag-2 {
+    background-color: #4a3a1a;
+    color: #e0b87a;
+    border-color: #7a5a2a;
+}
+
+[data-theme="dark"] .tag-3 {
+    background-color: #3a1a4a;
+    color: #c07ae0;
+    border-color: #5a2a7a;
+}
+
+[data-theme="dark"] .tag-L {
+    background-color: #1a4a1a;
+    color: #7ae07a;
+    border-color: #2a7a2a;
+}
+
+[data-theme="dark"] .tag-C {
+    background-color: #1a4a4a;
+    color: #7ae0d0;
+    border-color: #2a7a70;
+}
+
+/* ================================
+   TALKS CONTROLS
+   ================================ */
+
 .talks-controls {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background: #f8f8f8;
+    background: var(--controls-bg);
     border-radius: 8px;
     align-items: center;
 }
@@ -504,10 +633,11 @@ section h4 {
 
 .control-group select {
     padding: 6px 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-radius: 4px;
     font-size: 9.5pt;
-    background: white;
+    background: var(--bg);
+    color: var(--text);
     cursor: pointer;
 }
 
@@ -519,50 +649,59 @@ section h4 {
 
 .filter-btn {
     padding: 6px 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border);
     border-radius: 4px;
     font-size: 9pt;
-    background: white;
+    background: var(--bg);
+    color: var(--text);
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .filter-btn:hover {
-    background: #f0f0f0;
+    background: var(--card-hover);
 }
 
 .filter-btn.active {
-    background: #333;
-    color: white;
-    border-color: #333;
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
 }
 
 .filter-btn.tag-1-btn.active {
     background: #1a5f8a;
     border-color: #1a5f8a;
+    color: white;
 }
 
 .filter-btn.tag-2-btn.active {
     background: #8a5a1a;
     border-color: #8a5a1a;
+    color: white;
 }
 
 .filter-btn.tag-3-btn.active {
     background: #5a1a8a;
     border-color: #5a1a8a;
+    color: white;
 }
 
 .filter-btn.tag-L-btn.active {
     background: #1a8a1a;
     border-color: #1a8a1a;
+    color: white;
 }
 
 .filter-btn.tag-C-btn.active {
     background: #1a7a7a;
     border-color: #1a7a7a;
+    color: white;
 }
 
-/* Talks sections */
+/* ================================
+   TALKS SECTIONS
+   ================================ */
+
 .talks-section-header {
     display: flex;
     align-items: center;
@@ -573,24 +712,27 @@ section h4 {
 .talks-section-header h4 {
     margin: 0;
     font-size: 11pt;
-    color: #333;
+    color: var(--text);
 }
 
 .talks-section-header .line {
     flex: 1;
     height: 1px;
-    background: #ddd;
+    background: var(--border);
 }
 
 .talks-section-header .count {
     font-size: 9pt;
     color: var(--muted);
-    background: #f0f0f0;
+    background: var(--controls-bg);
     padding: 2px 10px;
     border-radius: 10px;
 }
 
-/* Enhanced talks list */
+/* ================================
+   TALKS LIST
+   ================================ */
+
 .talks-list {
     list-style: none;
     padding: 0;
@@ -599,36 +741,22 @@ section h4 {
 .talks-list li {
     padding: 1rem;
     margin-bottom: 0.75rem;
-    background: #fafafa;
+    background: var(--card-bg);
     border-radius: 6px;
-    border-left: 3px solid #ddd;
+    border-left: 3px solid var(--border);
     transition: all 0.2s ease;
 }
 
 .talks-list li:hover {
-    background: #f5f5f5;
+    background: var(--card-hover);
     transform: translateX(2px);
 }
 
-.talks-list li.interest-1 {
-    border-left-color: #1a5f8a;
-}
-
-.talks-list li.interest-2 {
-    border-left-color: #8a5a1a;
-}
-
-.talks-list li.interest-3 {
-    border-left-color: #5a1a8a;
-}
-
-.talks-list li.interest-L {
-    border-left-color: #1a8a1a;
-}
-
-.talks-list li.interest-C {
-    border-left-color: #1a7a7a;
-}
+.talks-list li.interest-1 { border-left-color: #1a5f8a; }
+.talks-list li.interest-2 { border-left-color: #8a5a1a; }
+.talks-list li.interest-3 { border-left-color: #5a1a8a; }
+.talks-list li.interest-L { border-left-color: #1a8a1a; }
+.talks-list li.interest-C { border-left-color: #1a7a7a; }
 
 /* Gradient borders for multiple tags */
 .talks-list li.interest-1.interest-2 {
@@ -674,12 +802,12 @@ section h4 {
 .talks-list .title {
     display: block;
     font-weight: 500;
-    color: #222;
+    color: var(--text);
     margin-bottom: 0.25rem;
 }
 
 .talks-list .title a {
-    color: #222;
+    color: var(--text);
     text-decoration: none;
 }
 
@@ -726,17 +854,17 @@ section h4 {
 .talks-list .date {
     display: block;
     font-size: 9pt;
-    color: #888;
+    color: var(--light);
     margin-top: 0.5rem;
 }
 
 /* Upcoming talks styling */
 .upcoming-talks li {
-    background: linear-gradient(135deg, #fafafa 0%, #f0f8ff 100%);
+    background: var(--card-gradient);
 }
 
 .upcoming-talks li:hover {
-    background: linear-gradient(135deg, #f5f5f5 0%, #e8f4fc 100%);
+    background: var(--card-hover);
 }
 
 /* Legend container */
@@ -746,7 +874,7 @@ section h4 {
     gap: 1.5rem;
     margin-bottom: 1rem;
     padding: 0.75rem 1rem;
-    background: #f8f8f8;
+    background: var(--controls-bg);
     border-radius: 6px;
     font-size: 9pt;
 }
@@ -763,25 +891,11 @@ section h4 {
     border-radius: 3px;
 }
 
-.legend-color.color-1 {
-    background: #1a5f8a;
-}
-
-.legend-color.color-2 {
-    background: #8a5a1a;
-}
-
-.legend-color.color-3 {
-    background: #5a1a8a;
-}
-
-.legend-color.color-L {
-    background: #1a8a1a;
-}
-
-.legend-color.color-C {
-    background: #1a7a7a;
-}
+.legend-color.color-1 { background: #1a5f8a; }
+.legend-color.color-2 { background: #8a5a1a; }
+.legend-color.color-3 { background: #5a1a8a; }
+.legend-color.color-L { background: #1a8a1a; }
+.legend-color.color-C { background: #1a7a7a; }
 
 /* Hidden state */
 .talks-list li.hidden {
@@ -802,7 +916,7 @@ section h4 {
 }
 
 /* ================================
-   VARIA PAGE STYLES
+   VARIA PAGE
    ================================ */
 
 #varia h3 {
@@ -817,15 +931,6 @@ section h4 {
     margin-bottom: 1rem;
 }
 
-#varia a {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-#varia a:hover {
-    text-decoration: underline;
-}
-
 ul.varia-list {
     margin: 0.5rem 0 1.5rem 1.25rem;
     font-size: 10.5pt;
@@ -834,15 +939,6 @@ ul.varia-list {
 ul.varia-list li {
     margin-bottom: 0.4rem;
     line-height: 1.5;
-}
-
-ul.varia-list a {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-ul.varia-list a:hover {
-    text-decoration: underline;
 }
 
 /* Affiliations */
@@ -856,7 +952,7 @@ ul.varia-list a:hover {
    ================================ */
 
 @media (max-width: 600px) {
-    body {
+    .page-wrapper {
         padding: 2rem 1rem;
     }
     
@@ -899,5 +995,11 @@ ul.varia-list a:hover {
     
     nav a {
         margin: 0 0.5rem;
+    }
+    
+    .theme-toggle {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
     }
 }
