@@ -67,11 +67,11 @@ header h1 {
 }
 
 .photo-frame {
-    width: 180px;
-    height: 180px;
+    width: 280px;    /* was 180px */
+    height: 280px;   /* was 180px */
     overflow: hidden;
     border: 3px solid var(--border);
-    border-radius: 4px; /* slight rounding for softer look, or use 0 for sharp corners */
+    border-radius: 4px;
 }
 
 .photo-frame img {
@@ -82,8 +82,8 @@ header h1 {
 
 /* Smaller photo for subpages */
 .photo-frame.small {
-    width: 120px;
-    height: 120px;
+    width: 150px;    /* was 120px */
+    height: 150px;   /* was 120px */
 }
 
 /* Intro section */
