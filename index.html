@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WMR6FTKGR0"></script>
     <script>
@@ -15,6 +14,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Julian Lee-Sursin</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Single-page navigation styles */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg, #fff);
+            z-index: 100;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border, #e5e5e5);
+            margin-bottom: 1.5rem;
+        }
+        .site-nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .site-nav a {
+            text-decoration: none;
+            font-weight: 500;
+            color: var(--muted, #666);
+            transition: color 0.2s;
+        }
+        .site-nav a:hover,
+        .site-nav a.active {
+            color: var(--text, #000);
+        }
+        .page-section {
+            min-height: 50vh;
+            padding-top: 2rem;
+        }
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border, #e5e5e5);
+            margin: 3rem 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Hide back-link since we're single page now */
+        .back-link {
+            display: none;
+        }
+        /* Adjust nav styles for subpages */
+        .subpage-nav {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
@@ -29,76 +78,443 @@
             <h1>Julian Lee-Sursin</h1>
         </header>
 
-        <div class="photo-section">
-            <div class="photo-frame">
-                <img src="images/place_de_la_sorbonne.jpg" alt="Julian Lee-Sursin at Place de la Sorbonne">
-            </div>
-        </div>
+        <!-- Sticky Navigation -->
+        <nav class="site-nav">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#varia">Varia</a></li>
+                <li><a href="cv.pdf">CV</a></li>
+            </ul>
+        </nav>
 
-        <section class="intro">
-            <p>Hi! I'm Julian. I do philosophy and cognitive science (mostly). I'm currently a visiting scholar at <a href="https://compthoughtlit.jhu.edu/directory/julian-lee-sursin/">Johns Hopkins</a> and finishing up an MS in cognitive science at the <a href="https://cognition.ens.fr/en">ENS</a>. I have an MPhil from <a href="https://www.sorbonne-universite.fr">La Sorbonne</a>.</p>
-
-             <p>Here is my <a href="cv.pdf">CV (PDF)</a>.</p>
-            
-            <p>My research focuses on explanation, language, and supralinguistic meaning (e.g. meaning in fashion). I also think about AI and computational neuroscience. You can learn more about my research by attending one of my upcoming talks:</p>
-            
-            <div class="upcoming-section">
-                <h3>Upcoming talks</h3>
-                <div class="carousel-container">
-                    <button class="carousel-btn prev" aria-label="Previous talk">‹</button>
-                    <div class="carousel-viewport">
-                        <div class="carousel-track">
-                            <a href="https://mbr026.com" class="carousel-card" target="_blank" rel="noopener">
-                                <div class="card-date">Jun 17-19, 2026</div>
-                                <div class="card-title">Towards an Explanatory Cognitive Model for Blackwell Informativeness</div>
-                                <div class="card-venue">10th International Conference on Model-Based Reasoning</div>
-                                <div class="card-location">📍 Rome, Italy</div>
-                            </a>
-                            <a href="https://www.su.se/english/divisions/department-of-philosophy/swedish-congress-of-philosophy" class="carousel-card" target="_blank" rel="noopener">
-                                <div class="card-date">Jun 12-14, 2026</div>
-                                <div class="card-title">Answering Why-Questions</div>
-                                <div class="card-venue">Swedish Congress of Philosophy</div>
-                                <div class="card-location">📍 Stockholm, Sweden</div>
-                            </a>
-                            <a href="https://www.eurosa.org/conferences/" class="carousel-card" target="_blank" rel="noopener">
-                                <div class="card-date">Jun 8-10, 2026</div>
-                                <div class="card-title">Fashion and the Jacksonian Mode: Intentionality Beyond Language</div>
-                                <div class="card-venue">17th annual conference of the European Society for Aesthetics (ESA)</div>
-                                <div class="card-location">📍 Jyväskylä, Finland</div>
-                            </a>
-                            <a href="https://philevents.org/event/show/144202" class="carousel-card" target="_blank" rel="noopener">
-                                <div class="card-date">Apr 24–26, 2026</div>
-                                <div class="card-title">Do AI Agents Meet the Epistemic Norms for Explanation?</div>
-                                <div class="card-venue">Humanities of AI Workshop, Johns Hopkins</div>
-                                <div class="card-location">📍 Baltimore, MD</div>
-                            </a>
-                            <a href="https://aesthetics-online.org/events/EventDetails.aspx" class="carousel-card" target="_blank" rel="noopener">
-                                <div class="card-date">Apr 10, 2026</div>
-                                <div class="card-title">On Fashion's Perceptual Meaning</div>
-                                <div class="card-venue">American Society for Aesthetics, Eastern Division Meeting</div>
-                                <div class="card-location">📍 Philadelphia, PA</div>
-                            </a>
-                            <a href="https://calendar.ufl.edu/clas_philosophy/event/53396-graduate-philosophy-conference" class="carousel-card" target="_blank" rel="noopener">
-                                <div class="card-date">Apr 4, 2026</div>
-                                <div class="card-title">A Semantic Argument Against Radical Cognitivism</div>
-                                <div class="card-venue">UF Graduate Philosophy Conference</div>
-                                <div class="card-location">📍 Gainesville, FL</div>
-                            </a>
-                        </div>
-                    </div>
-                    <button class="carousel-btn next" aria-label="Next talk">›</button>
+        <!-- ==================== HOME SECTION ==================== -->
+        <section id="home" class="page-section">
+            <div class="photo-section">
+                <div class="photo-frame">
+                    <img src="images/place_de_la_sorbonne.jpg" alt="Julian Lee-Sursin at Place de la Sorbonne">
                 </div>
-                <div class="carousel-dots"></div>
             </div>
-            
-            <p>Or click <a href="research.html">here</a> for more on my research interests and a full list of talks.</p>
-            
-            <p>Click <a href="varia.html">here</a> to learn more about some of my other interests.</p>
-            
+
+            <section class="intro">
+                <p>Hi! I'm Julian. I do philosophy and cognitive science (mostly). I'm currently a visiting scholar at <a href="https://compthoughtlit.jhu.edu/directory/julian-lee-sursin/">Johns Hopkins</a> and finishing up an MS in cognitive science at the <a href="https://cognition.ens.fr/en">ENS</a>. I have an MPhil from <a href="https://www.sorbonne-universite.fr">La Sorbonne</a>.</p>
+
+                <p>Here is my <a href="cv.pdf">CV (PDF)</a>.</p>
+                
+                <p>My research focuses on explanation, language, and supralinguistic meaning (e.g. meaning in fashion). I also think about AI and computational neuroscience. You can learn more about my research by attending one of my upcoming talks:</p>
+                
+                <div class="upcoming-section">
+                    <h3>Upcoming talks</h3>
+                    <div class="carousel-container">
+                        <button class="carousel-btn prev" aria-label="Previous talk">‹</button>
+                        <div class="carousel-viewport">
+                            <div class="carousel-track">
+                                <a href="https://mbr026.com" class="carousel-card" target="_blank" rel="noopener">
+                                    <div class="card-date">Jun 17-19, 2026</div>
+                                    <div class="card-title">Towards an Explanatory Cognitive Model for Blackwell Informativeness</div>
+                                    <div class="card-venue">10th International Conference on Model-Based Reasoning</div>
+                                    <div class="card-location">📍 Rome, Italy</div>
+                                </a>
+                                <a href="https://www.su.se/english/divisions/department-of-philosophy/swedish-congress-of-philosophy" class="carousel-card" target="_blank" rel="noopener">
+                                    <div class="card-date">Jun 12-14, 2026</div>
+                                    <div class="card-title">Answering Why-Questions</div>
+                                    <div class="card-venue">Swedish Congress of Philosophy</div>
+                                    <div class="card-location">📍 Stockholm, Sweden</div>
+                                </a>
+                                <a href="https://www.eurosa.org/conferences/" class="carousel-card" target="_blank" rel="noopener">
+                                    <div class="card-date">Jun 8-10, 2026</div>
+                                    <div class="card-title">Fashion and the Jacksonian Mode: Intentionality Beyond Language</div>
+                                    <div class="card-venue">17th annual conference of the European Society for Aesthetics (ESA)</div>
+                                    <div class="card-location">📍 Jyväskylä, Finland</div>
+                                </a>
+                                <a href="https://philevents.org/event/show/144202" class="carousel-card" target="_blank" rel="noopener">
+                                    <div class="card-date">Apr 24–26, 2026</div>
+                                    <div class="card-title">Do AI Agents Meet the Epistemic Norms for Explanation?</div>
+                                    <div class="card-venue">Humanities of AI Workshop, Johns Hopkins</div>
+                                    <div class="card-location">📍 Baltimore, MD</div>
+                                </a>
+                                <a href="https://aesthetics-online.org/events/EventDetails.aspx" class="carousel-card" target="_blank" rel="noopener">
+                                    <div class="card-date">Apr 10, 2026</div>
+                                    <div class="card-title">On Fashion's Perceptual Meaning</div>
+                                    <div class="card-venue">American Society for Aesthetics, Eastern Division Meeting</div>
+                                    <div class="card-location">📍 Philadelphia, PA</div>
+                                </a>
+                                <a href="https://calendar.ufl.edu/clas_philosophy/event/53396-graduate-philosophy-conference" class="carousel-card" target="_blank" rel="noopener">
+                                    <div class="card-date">Apr 4, 2026</div>
+                                    <div class="card-title">A Semantic Argument Against Radical Cognitivism</div>
+                                    <div class="card-venue">UF Graduate Philosophy Conference</div>
+                                    <div class="card-location">📍 Gainesville, FL</div>
+                                </a>
+                            </div>
+                        </div>
+                        <button class="carousel-btn next" aria-label="Next talk">›</button>
+                    </div>
+                    <div class="carousel-dots"></div>
+                </div>
+                
+                <p>Or scroll down to learn more about my <a href="#research">research interests</a> and see a full list of talks.</p>
+                
+                <p>See <a href="#varia">varia</a> to learn more about some of my other interests.</p>
+                
+            </section>
+
+            <section class="contact-section">
+                <p>Do feel free to reach me at <a href="mailto:jleesur1@jh.edu">jleesur1@jh.edu</a> if you wanna talk about philosophy and cogsci (or anything else really).</p>
+            </section>
         </section>
 
-        <section class="contact-section">
-            <p>Do feel free to reach me at <a href="mailto:jleesur1@jh.edu">jleesur1@jh.edu</a> if you wanna talk about philosophy and cogsci (or anything else really).</p>
+        <hr class="section-divider">
+
+        <!-- ==================== RESEARCH SECTION ==================== -->
+        <section id="research" class="page-section">
+            <div class="photo-section">
+                <div class="photo-frame small">
+                    <img src="images/research_photo.jpg" alt="Julian Lee-Sursin">
+                </div>
+            </div>
+
+            <h2>Research</h2>
+            <p>Recently, my research has clustered in three main areas.</p>
+
+            <div class="research-area">
+                <p class="area-label">I. Explanation and Why-Questions</p>
+                <p>The first centers around the fact that explanations are answers to why questions. This area has proven to be an interesting intersection of philosophy of science and metaphysics (on the explanation side), which I studied during my MPhil at La Sorbonne, and language and cognitive science (on the why-questions side), which I am currently studying at the ENS. So far, most of the talks I've given in this area center around the semantics of explanation and why-questions—and some implications of the semantics for the metaphysics of time and for AI.</p>
+            </div>
+
+            <div class="research-area">
+                <p class="area-label">II. Philosophy of Computational Neuroscience and AI</p>
+                <p>A second interest of mine involves general questions about the philosophy of computational neuroscience and AI. For instance, I have some thoughts about inferring things about the computational structure of mind from empirical data about brain-model alignment.</p>
+            </div>
+
+            <div class="research-area">
+                <p class="area-label">III. Meaning Beyond Language</p>
+                <p>My third main interest is a bit broader, and has to do with the following question: <em>How, generally speaking, can things have meaning?</em> This interest involves exploring how non-linguistic tokens—such as fashion tokens or non-verbal actions—communicate meaning and inhere content. So far, this has taken the form of figuring out how fashion inheres meaning and communicates. This research has paired nicely with my more dilettantish interests in fashion and in music (see <a href="#varia">varia</a>).</p>
+            </div>
+
+            <section id="talks">
+                <h2>Presentations</h2>
+                <p class="legend">* = abstract refereed · ** = paper refereed · † = invited</p>
+
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/V7v8WOq3N6E?start=8561" 
+                        title="Fashion and the Jacksonian Mode - Institut Français de la Mode 2025"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="video-caption">Fashion and the Jacksonian Mode: Intentionality Beyond Language — Symposium, Institut Français de la Mode, Paris (Nov 2025)</p>
+
+                <h4>Selected Talks</h4>
+                <p style="font-size: 9.5pt; color: var(--muted); margin-top: -0.5rem; margin-bottom: 1.25rem;">(see CV for complete list)</p>
+                
+                <!-- Legend for research interests -->
+                <div class="legend-container">
+                    <div class="legend-item">
+                        <div class="legend-color color-1"></div>
+                        <span>I. Explanation & Why-Questions</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color color-2"></div>
+                        <span>II. Phil. of Comp. Neuroscience & AI</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color color-3"></div>
+                        <span>III. Meaning Beyond Language</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color color-L"></div>
+                        <span>L. Language & Semantics</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color color-C"></div>
+                        <span>C. CogSci & Epistemology</span>
+                    </div>
+                </div>
+
+                <!-- Sort and filter controls -->
+                <div class="talks-controls">
+                    <div class="control-group">
+                        <label for="sort-select">Sort by:</label>
+                        <select id="sort-select">
+                            <option value="date-desc">Date (newest first)</option>
+                            <option value="date-asc">Date (oldest first)</option>
+                            <option value="interest">Research Interest</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>Filter by interest:</label>
+                        <div class="filter-buttons">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn tag-1-btn" data-filter="1">I</button>
+                            <button class="filter-btn tag-2-btn" data-filter="2">II</button>
+                            <button class="filter-btn tag-3-btn" data-filter="3">III</button>
+                            <button class="filter-btn tag-L-btn" data-filter="L">L</button>
+                            <button class="filter-btn tag-C-btn" data-filter="C">C</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Talks -->
+                <div class="talks-section-header">
+                    <h4>📅 Upcoming</h4>
+                    <div class="line"></div>
+                    <span class="count" id="upcoming-count">0</span>
+                </div>
+                
+                <ul class="talks-list upcoming-talks" id="upcoming-talks">
+                    <li data-date="2026-06-17" data-interests="1,C" class="interest-1 interest-C">
+                        <span class="title">
+                            <a href="https://mbr026.com">Towards an Explanatory Cognitive Model for Blackwell Informativeness</a><sup>*</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-C">C</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://mbr026.com">10th International Conference on Model-Based Reasoning</a>, Rome, Italy</span>
+                        <span class="date">Jun 17–19, 2026</span>
+                    </li>
+                    <li data-date="2026-06-12" data-interests="1,L" class="interest-1 interest-L">
+                        <span class="title">
+                            <a href="https://www.su.se/english/divisions/department-of-philosophy/swedish-congress-of-philosophy">Answering Why-Questions</a><sup>*</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://www.su.se/english/divisions/department-of-philosophy/swedish-congress-of-philosophy">Swedish Congress of Philosophy</a>, Stockholm, Sweden</span>
+                        <span class="date">Jun 12–14, 2026</span>
+                    </li>
+                    <li data-date="2026-06-08" data-interests="3,L" class="interest-3 interest-L">
+                        <span class="title">
+                            <a href="https://www.eurosa.org/conferences/">Fashion and the Jacksonian Mode: Intentionality Beyond Language</a><sup>*</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-3">III</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://www.eurosa.org/conferences/">17th Annual Conference of the European Society for Aesthetics (ESA)</a>, Jyväskylä, Finland</span>
+                        <span class="date">Jun 8–10, 2026</span>
+                    </li>
+                    <li data-date="2026-04-24" data-interests="1,2" class="interest-1 interest-2">
+                        <span class="title">
+                            <a href="https://philevents.org/event/show/144202">Do AI Agents Meet the Epistemic Norms for Explanation?</a><sup>*</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-2">II</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://philevents.org/event/show/144202">Inaugural Humanities of AI Workshop</a>, Johns Hopkins University, Baltimore, MD</span>
+                        <span class="date">Apr 24–26, 2026</span>
+                    </li>
+                    <li data-date="2026-04-10" data-interests="3" class="interest-3">
+                        <span class="title">
+                            <a href="https://aesthetics-online.org/events/EventDetails.aspx">On Fashion's Perceptual Meaning</a><sup>**</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-3">III</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://aesthetics-online.org/events/EventDetails.aspx">American Society for Aesthetics, Eastern Division</a>, Philadelphia, PA</span>
+                        <span class="date">Apr 10–11, 2026</span>
+                    </li>
+                    <li data-date="2026-04-04" data-interests="1,L" class="interest-1 interest-L">
+                        <span class="title">
+                            <a href="https://philevents.org/event/show/141110">A Semantic Argument Against Radical Cognitivism</a><sup>*</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://philevents.org/event/show/141110">UF Graduate Philosophy Conference</a>, Gainesville, FL</span>
+                        <span class="date">Apr 4, 2026</span>
+                    </li>
+                </ul>
+                
+                <p class="empty-state" id="upcoming-empty">No upcoming talks match your filter.</p>
+
+                <!-- Past Talks -->
+                <div class="talks-section-header">
+                    <h4>📁 Past</h4>
+                    <div class="line"></div>
+                    <span class="count" id="past-count">0</span>
+                </div>
+                
+                <ul class="talks-list past-talks" id="past-talks">
+                    <li data-date="2026-02-18" data-interests="1,L" class="interest-1 interest-L">
+                        <span class="title">
+                            Why Presentism Precludes Explanation<sup>*</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue">Central APA, <a href="https://www.philtimesociety.com/meetings/">Philosophy of Time Society</a>, Chicago, IL</span>
+                        <span class="date">Feb 18, 2026</span>
+                    </li>
+                    <li data-date="2026-01-07" data-interests="1,L" class="interest-1 interest-L">
+                        <span class="title">
+                            How Causation Explains: A Semantic Inquiry<sup>*</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue">Eastern APA, <a href="https://causation.science">Society for Philosophy of Causation</a>, Baltimore, MD</span>
+                        <span class="date">Jan 7, 2026</span>
+                    </li>
+                    <li data-date="2025-11-20" data-interests="3,L" class="interest-3 interest-L">
+                        <span class="title">
+                            <a href="https://www.ifmparis.fr/en/news/symposium-2025">Fashion and the Jacksonian Mode: Intentionality Beyond Language</a><sup>**</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-3">III</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://www.ifmparis.fr/en/news/symposium-2025">Symposium, Institut Français de la Mode</a>, Paris, France</span>
+                        <span class="date">Nov 20, 2025</span>
+                    </li>
+                    <li data-date="2025-11-08" data-interests="1,L" class="interest-1 interest-L">
+                        <span class="title">
+                            <a href="https://illinoisphilosophicalassociation.wordpress.com/calls-for-papers-2025">Semantics for Explanation</a><sup>**</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://illinoisphilosophicalassociation.wordpress.com/calls-for-papers-2025">Illinois Philosophical Association</a>, Charleston, IL</span>
+                        <span class="date">Nov 8, 2025</span>
+                    </li>
+                    <li data-date="2025-11-03" data-interests="L" class="interest-L">
+                        <span class="title">
+                            <a href="https://www.oberlin.edu/arts-and-sciences/departments/philosophy">Composition and Metalinguistic Negotiation</a><sup>†</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue">Talk for philosophy majors and faculty, <a href="https://www.oberlin.edu/arts-and-sciences/departments/philosophy">Oberlin College</a></span>
+                        <span class="date">Nov 3, 2025</span>
+                    </li>
+                    <li data-date="2025-11-01" data-interests="1,C" class="interest-1 interest-C">
+                        <span class="title">
+                            <a href="https://ipa.hanover.edu">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</a><sup>**</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-C">C</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://ipa.hanover.edu">Indiana Philosophical Association</a>, Bloomington, IN</span>
+                        <span class="note">Winner, 2025 Graduate Paper Prize</span>
+                        <span class="date">Nov 1, 2025</span>
+                    </li>
+                    <li data-date="2025-10-24" data-interests="1,L" class="interest-1 interest-L">
+                        <span class="title">
+                            <a href="https://philosophy.utoronto.ca/event/2025-annual-toronto-graduate-philosophy-conference/">Semantics for Explanation</a><sup>**</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://philosophy.utoronto.ca/event/2025-annual-toronto-graduate-philosophy-conference/">24th University of Toronto Graduate Conference</a>, Toronto, Canada</span>
+                        <span class="date">Oct 24, 2025</span>
+                    </li>
+                    <li data-date="2025-10-16" data-interests="1,C" class="interest-1 interest-C">
+                        <span class="title">
+                            <a href="http://www.pheno.ulg.ac.be/colloques/">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</a><sup>*</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-C">C</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="http://www.pheno.ulg.ac.be/colloques/">CREPH: Mind Conference</a>, Liège, Belgium</span>
+                        <span class="date">Oct 16, 2025</span>
+                    </li>
+                    <li data-date="2025-10-09" data-interests="1,2" class="interest-1 interest-2">
+                        <span class="title">
+                            <a href="https://www.ontologia.info/es/index.php/program">Do AI Agents Meet the Epistemic Norms for Explanation?</a><sup>*</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-2">II</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://www.ontologia.info/es/index.php/program">XVI International Ontology Congress</a>, Basque Country, Spain</span>
+                        <span class="date">Oct 9, 2025</span>
+                    </li>
+                    <li data-date="2025-09-05" data-interests="1,L" class="interest-1 interest-L">
+                        <span class="title">
+                            <a href="https://sophia-conference.org/">The Special Questions Dispute</a><sup>**</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://sophia-conference.org/">SOPhiA</a>, Salzburg, Austria</span>
+                        <span class="date">Sep 5, 2025</span>
+                    </li>
+                    <li data-date="2025-07-13" data-interests="1,L" class="interest-1 interest-L">
+                        <span class="title">
+                            <a href="https://aristoteliansociety.org.uk/the-joint-session/">The Special Questions Dispute</a><sup>**</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-1">I</span>
+                                <span class="tag tag-L">L</span>
+                            </span>
+                        </span>
+                        <span class="venue"><a href="https://aristoteliansociety.org.uk/the-joint-session/">99th Joint Session of the Aristotelian and Mind Societies</a>, Glasgow, Scotland</span>
+                        <span class="date">Jul 13, 2025</span>
+                    </li>
+                    <li data-date="2025-05-09" data-interests="L,C" class="interest-L interest-C">
+                        <span class="title">
+                            <a href="http://www.institutnicod.org/">Composition and Metalinguistic Negotiation</a><sup>†</sup>
+                            <span class="tags-container">
+                                <span class="tag tag-L">L</span>
+                                <span class="tag tag-C">C</span>
+                            </span>
+                        </span>
+                        <span class="venue">Salvador Mascarenhas Lab Meeting, <a href="http://www.institutnicod.org/">Institut Jean Nicod</a>, Paris, France</span>
+                        <span class="date">May 9, 2025</span>
+                    </li>
+                </ul>
+                
+                <p class="empty-state" id="past-empty">No past talks match your filter.</p>
+            </section>
+
+            <section>
+                <h3>Affiliations</h3>
+                <p class="affiliations">American Philosophical Association · American Society for Aesthetics · Aristotelian Society · European Society For Aesthetics · Philosophy of Time Society · Society for Philosophy of Causation · Southwestern Philosophical Society</p>
+            </section>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ==================== VARIA SECTION ==================== -->
+        <section id="varia" class="page-section">
+            <div class="photo-section">
+                <div class="photo-frame small">
+                    <img src="images/varia_photo.jpg" alt="Julian Lee-Sursin">
+                </div>
+            </div>
+
+            <h2>Varia</h2>
+            
+            <p>I have a few interests outside of philosophy and cognitive science, some of which connect back to my academic work on <a href="#research">supralinguistic meaning</a>.</p>
+
+            <h3>Fashion</h3>
+            <p>My interest in fashion has paired nicely with my research on how non-linguistic tokens can communicate meaning. Fashion is a particularly rich domain for this: clothing choices can express identity, social position, and aesthetic values without a single word being spoken. In March 2025, I had the chance to perform in Paris Fashion Week with <a href="https://jtdapperfashionweek.com/2025/03/10/duran-lantink-fall-winter-2025-at-paris-fashion-week/" target="_blank" rel="noopener"><em>Duranimal</em></a> (Duran Lantink's show) and at the <a href="https://www.sauthermes.com/fr/" target="_blank" rel="noopener">Saut Hermès</a> dinner. These experiences gave me a firsthand look at how fashion can act as a communicative medium.</p>
+
+            <h3>Music</h3>
+            <p>I am a classically trained bass vocalist. Currently, I study at the Peabody Preparatory. Before that, I took some music courses at the Oberlin Conservatory. Like fashion, music offers a window into supralinguistic meaning.</p>
+            
+            <p>Some notable concerts I've sung in:</p>
+            <ul class="varia-list">
+                <li>Verdi's <em>Macbeth</em> with Plácido Domingo at <a href="https://www.sallegaveau.com/spectacles/placido-domingo" target="_blank" rel="noopener">Salle Gaveau</a> (Apr 2025)</li>
+                <li>Rossini's <em>Le Comte Ory</em> at the <a href="https://www.theatrechampselysees.fr/en/season-2024-2025/le-comte-ory-1" target="_blank" rel="noopener">Théâtre des Champs-Élysées</a> (Nov 2024)</li>
+                <li>The <a href="https://www.youtube.com/watch?v=onNIrlN-mrg&list=RDonNIrlN-mrg&start_radio=1" target="_blank" rel="noopener">Bastille Day Parade</a>, featuring Macron and the Olympic torch (Jul 2024)</li>
+                <li>Royal Philharmonic Orchestra, dir. Joe Hisaishi, at <a href="https://www.parisladefense-arena.com/evenement/joe-hisaishi-vip/" target="_blank" rel="noopener">La Défense Arena</a> (Apr 2024)</li>
+                <li>Mozart's Mass in C minor at <a href="https://www.radioclassique.fr/replay-concerts/la-grande-messe-en-ut-de-mozart-a-la-cathedrale-saint-louis-des-invalides/" target="_blank" rel="noopener">Les Invalides</a> (Dec 2023)</li>
+                <li>Regular concerts at the Philharmonie de Paris</li>
+            </ul>
+
+            <h3>Sports</h3>
+            <p>I also enjoy a few sports that have nothing to do with supralinguistic meaning (as far as I can tell). I play chess, currently rated <a href="https://ratings.fide.com/profile/26045931" target="_blank" rel="noopener">1742 FIDE (blitz)</a>. In college, I was a defensive end for Oberlin's football team. And in high school, I played varsity tennis.</p>
         </section>
 
         <footer>
@@ -129,6 +545,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // ===== CAROUSEL FUNCTIONALITY =====
             const track = document.querySelector('.carousel-track');
             const cards = document.querySelectorAll('.carousel-card');
             const prevBtn = document.querySelector('.carousel-btn.prev');
@@ -155,8 +572,6 @@
                 dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentIndex);
                 });
-                
-                // Update button states
                 prevBtn.disabled = currentIndex === 0;
                 nextBtn.disabled = currentIndex === totalCards - 1;
             }
@@ -183,7 +598,7 @@
             prevBtn.addEventListener('click', prevSlide);
             nextBtn.addEventListener('click', nextSlide);
             
-            // Keyboard navigation
+            // Keyboard navigation for carousel
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft') prevSlide();
                 if (e.key === 'ArrowRight') nextSlide();
@@ -205,16 +620,116 @@
             function handleSwipe() {
                 const swipeThreshold = 50;
                 const diff = touchStartX - touchEndX;
-                
-                if (diff > swipeThreshold) {
-                    nextSlide();
-                } else if (diff < -swipeThreshold) {
-                    prevSlide();
-                }
+                if (diff > swipeThreshold) nextSlide();
+                else if (diff < -swipeThreshold) prevSlide();
             }
             
-            // Initial state
             updateCarousel();
+
+            // ===== TALKS FILTER/SORT FUNCTIONALITY =====
+            const sortSelect = document.getElementById('sort-select');
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const upcomingList = document.getElementById('upcoming-talks');
+            const pastList = document.getElementById('past-talks');
+            const upcomingCount = document.getElementById('upcoming-count');
+            const pastCount = document.getElementById('past-count');
+            const upcomingEmpty = document.getElementById('upcoming-empty');
+            const pastEmpty = document.getElementById('past-empty');
+            
+            let currentFilter = 'all';
+            
+            function updateCounts() {
+                const visibleUpcoming = upcomingList.querySelectorAll('li:not(.hidden)').length;
+                const visiblePast = pastList.querySelectorAll('li:not(.hidden)').length;
+                
+                upcomingCount.textContent = visibleUpcoming;
+                pastCount.textContent = visiblePast;
+                
+                upcomingEmpty.classList.toggle('visible', visibleUpcoming === 0);
+                pastEmpty.classList.toggle('visible', visiblePast === 0);
+            }
+            
+            function filterTalks(filter) {
+                currentFilter = filter;
+                const allTalks = document.querySelectorAll('.talks-list li');
+                
+                allTalks.forEach(talk => {
+                    if (filter === 'all') {
+                        talk.classList.remove('hidden');
+                    } else {
+                        const interests = talk.dataset.interests.split(',');
+                        if (interests.includes(filter)) {
+                            talk.classList.remove('hidden');
+                        } else {
+                            talk.classList.add('hidden');
+                        }
+                    }
+                });
+                
+                updateCounts();
+            }
+            
+            function sortTalks(sortType) {
+                [upcomingList, pastList].forEach(list => {
+                    const items = Array.from(list.querySelectorAll('li'));
+                    
+                    items.sort((a, b) => {
+                        if (sortType === 'date-desc') {
+                            return new Date(b.dataset.date) - new Date(a.dataset.date);
+                        } else if (sortType === 'date-asc') {
+                            return new Date(a.dataset.date) - new Date(b.dataset.date);
+                        } else if (sortType === 'interest') {
+                            const aInterests = a.dataset.interests.split(',').sort().join(',');
+                            const bInterests = b.dataset.interests.split(',').sort().join(',');
+                            if (aInterests === bInterests) {
+                                return new Date(b.dataset.date) - new Date(a.dataset.date);
+                            }
+                            return aInterests.localeCompare(bInterests);
+                        }
+                        return 0;
+                    });
+                    
+                    items.forEach(item => list.appendChild(item));
+                });
+            }
+            
+            sortSelect.addEventListener('change', (e) => {
+                sortTalks(e.target.value);
+            });
+            
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterTalks(btn.dataset.filter);
+                });
+            });
+            
+            updateCounts();
+
+            // ===== NAVIGATION ACTIVE STATE =====
+            const navLinks = document.querySelectorAll('.site-nav a[href^="#"]');
+            const sections = document.querySelectorAll('.page-section');
+            
+            function updateActiveNav() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150;
+                    if (window.scrollY >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', updateActiveNav);
+            updateActiveNav();
         });
     </script>
 
