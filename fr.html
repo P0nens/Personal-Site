@@ -96,29 +96,66 @@
         .writing-list {
             list-style: none;
             padding: 0;
-            margin: 1.5rem 0;
+            margin: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
         }
         .writing-item {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--border, #e5e5e5);
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border, #e5e5e5);
+            border-bottom: none;
+            background: var(--bg, #fff);
+            transition: all 0.2s ease;
+        }
+        .writing-item:first-child {
+            border-radius: 10px 10px 0 0;
         }
         .writing-item:last-child {
-            border-bottom: none;
+            border-bottom: 1px solid var(--border, #e5e5e5);
+            border-radius: 0 0 10px 10px;
+        }
+        .writing-item:only-child {
+            border-radius: 10px;
+            border-bottom: 1px solid var(--border, #e5e5e5);
+        }
+        .writing-item:hover {
+            background: var(--bg-alt, #f9f9f9);
         }
         .writing-title {
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+            line-height: 1.4;
         }
         .writing-title a {
             text-decoration: none;
             color: var(--text, #000);
+            transition: color 0.2s;
         }
         .writing-title a:hover {
-            text-decoration: underline;
+            color: var(--accent, #0066cc);
         }
         .writing-meta {
             font-size: 0.9rem;
             color: var(--muted, #666);
+            margin-bottom: 0.25rem;
+        }
+        .writing-coauthors {
+            font-size: 0.85rem;
+            color: var(--muted, #888);
+            font-style: italic;
+        }
+        .writing-coauthors a {
+            color: var(--muted, #666);
+            text-decoration: none;
+        }
+        .writing-coauthors a:hover {
+            text-decoration: underline;
+        }
+        .writing-section-intro {
+            color: var(--muted, #666);
+            margin-bottom: 1.5rem;
         }
     </style>
 </head>
@@ -218,6 +255,36 @@
             <section class="contact-section">
                 <p>N'hésitez pas à me contacter à <a href="mailto:julian.sursin@ens.psl.eu">julian.sursin@ens.psl.eu</a> si vous voulez discuter de philosophie et de sciences cognitives (ou de n'importe quoi d'autre).</p>
             </section>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- ==================== ÉCRITS SECTION ==================== -->
+        <section id="ecrits" class="page-section">
+            <h2>Écrits</h2>
+            <p class="writing-section-intro">Articles et rapports sélectionnés.</p>
+
+            <ul class="writing-list">
+                <li class="writing-item">
+                    <div class="writing-title">
+                        <a href="https://philsci-archive.pitt.edu/30629/1/AI_Regress_LeeSursinRyoo.pdf" target="_blank" rel="noopener">« A Regress Argument Concerning Autonomous Self-Correction in AI Agents »</a>
+                    </div>
+                    <div class="writing-meta">Prépublication</div>
+                    <div class="writing-coauthors">avec <a href="https://hongjooryoo.com" target="_blank" rel="noopener">Hong Joo Ryoo</a></div>
+                </li>
+                <li class="writing-item">
+                    <div class="writing-title">
+                        <a href="https://philpapers.org/rec/LEEPAT-17" target="_blank" rel="noopener">« Panpsychism and the Individuation Problem: Comments on Taofeek »</a>
+                    </div>
+                    <div class="writing-meta"><em>Southwest Philosophy Review</em> (à paraître)</div>
+                </li>
+                <li class="writing-item">
+                    <div class="writing-title">
+                        <a href="Rapport_de_sejour_final.pdf">« Rapport de séjour de recherche à Johns Hopkins University »</a>
+                    </div>
+                    <div class="writing-meta">Rapport de séjour, juin 2026</div>
+                </li>
+            </ul>
 
             <div class="video-section">
                 <p>Voici une vidéo de l'une de mes communications récentes :</p>
@@ -234,28 +301,6 @@
 
                 <p>Voir mon <a href="cv.pdf">CV</a> pour la liste complète de mes communications.</p>
             </div>
-        </section>
-
-        <hr class="section-divider">
-
-        <!-- ==================== ÉCRITS SECTION ==================== -->
-        <section id="ecrits" class="page-section">
-            <h2>Écrits</h2>
-
-            <ul class="writing-list">
-                <li class="writing-item">
-                    <div class="writing-title">
-                        <a href="https://philpapers.org/rec/LEEPAT-17" target="_blank" rel="noopener">« Panpsychism and the Individuation Problem: Comments on Taofeek »</a>
-                    </div>
-                    <div class="writing-meta"><em>Southwest Philosophy Review</em> (à paraître)</div>
-                </li>
-                <li class="writing-item">
-                    <div class="writing-title">
-                        <a href="Rapport_de_sejour_final.pdf">« Rapport de séjour de recherche à Johns Hopkins University »</a>
-                    </div>
-                    <div class="writing-meta">Rapport de séjour, juin 2026</div>
-                </li>
-            </ul>
         </section>
 
         <hr class="section-divider">
