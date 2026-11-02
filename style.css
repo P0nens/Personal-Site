@@ -35,38 +35,16 @@ body {
     min-height: 100vh;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 /* Content wrapper */
 .page-wrapper {
     max-width: 600px;
     margin: 0 auto;
     padding: 3rem 1.5rem;
     min-height: 100vh;
-}
-
-/* ================================
-   LANGUAGE TOGGLE
-   ================================ */
-
-.lang-toggle {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    font-size: 9pt;
-}
-
-.lang-toggle a {
-    color: var(--muted);
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
-}
-
-.lang-toggle a:hover {
-    color: var(--text);
-}
-
-.lang-toggle a.active {
-    color: var(--text);
-    font-weight: 600;
 }
 
 /* ================================
@@ -83,6 +61,62 @@ header h1 {
     font-weight: 400;
     letter-spacing: 0.5px;
     color: var(--text);
+}
+
+/* ================================
+   STICKY NAV
+   ================================ */
+
+.site-nav {
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.site-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.site-nav a {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 10pt;
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.site-nav a:hover {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.site-nav a.active {
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* ================================
+   PAGE SECTIONS & DIVIDERS
+   ================================ */
+
+.page-section {
+    padding-top: 1.5rem;
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
 }
 
 /* ================================
@@ -138,6 +172,44 @@ a:hover {
 
 .intro p {
     margin-bottom: 1rem;
+}
+
+/* ================================
+   QUICK LINKS
+   ================================ */
+
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0 2rem 0;
+    flex-wrap: wrap;
+}
+
+.quick-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 10pt;
+    transition: all 0.2s;
+    background: var(--bg);
+}
+
+.quick-link:hover {
+    background: var(--card-bg);
+    border-color: var(--muted);
+    text-decoration: none;
+}
+
+.quick-link svg {
+    width: 16px;
+    height: 16px;
 }
 
 /* ================================
@@ -319,6 +391,240 @@ a:hover {
 }
 
 /* ================================
+   RESEARCH STATEMENT
+   ================================ */
+
+.research-statement p {
+    margin-bottom: 1rem;
+    font-size: 10.5pt;
+    line-height: 1.65;
+}
+
+/* ================================
+   PAPERS / WRITING SECTION
+   ================================ */
+
+.writing-section-label {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--light);
+    margin: 2rem 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.writing-section-note {
+    font-size: 10pt;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.writing-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.writing-item {
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    background: var(--bg);
+    transition: background 0.2s ease;
+}
+
+.writing-item:first-child {
+    border-radius: 6px 6px 0 0;
+}
+
+.writing-item:last-child {
+    border-bottom: 1px solid var(--border);
+    border-radius: 0 0 6px 6px;
+}
+
+.writing-item:only-child {
+    border-radius: 6px;
+    border-bottom: 1px solid var(--border);
+}
+
+.writing-item:hover {
+    background: var(--card-bg);
+}
+
+.writing-title {
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    font-size: 10.5pt;
+    line-height: 1.45;
+}
+
+.writing-title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.writing-title a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.writing-meta {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+}
+
+.writing-note {
+    font-size: 9pt;
+    color: var(--light);
+    font-style: italic;
+}
+
+.writing-note a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.writing-note a:hover {
+    text-decoration: underline;
+}
+
+.papers-footer {
+    margin-top: 2rem;
+    font-size: 10pt;
+    color: var(--muted);
+}
+
+/* ================================
+   SECTIONS (general)
+   ================================ */
+
+section h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+section h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Research areas (unused now but kept for compatibility) */
+.research-area {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border);
+}
+
+.research-area .area-label {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.research-area p {
+    font-size: 10.5pt;
+    color: var(--muted);
+}
+
+/* Video */
+.video-section {
+    margin-top: 2rem;
+}
+
+.video-section > p {
+    margin-bottom: 0.5rem;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin: 0.5rem 0;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-caption {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+/* ================================
+   BACK NAV (varia page)
+   ================================ */
+
+.back-nav {
+    margin-bottom: 2rem;
+}
+
+.back-nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 10pt;
+    transition: color 0.2s;
+}
+
+.back-nav a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ================================
+   VARIA PAGE
+   ================================ */
+
+#varia h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+#varia p {
+    margin-bottom: 1rem;
+}
+
+ul.varia-list {
+    margin: 0.5rem 0 1.5rem 1.25rem;
+    font-size: 10.5pt;
+}
+
+ul.varia-list li {
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+}
+
+/* ================================
    FOOTER
    ================================ */
 
@@ -361,153 +667,6 @@ footer p {
 }
 
 /* ================================
-   NAVIGATION
-   ================================ */
-
-nav {
-    text-align: center;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
-}
-
-nav a {
-    color: var(--muted);
-    text-decoration: none;
-    margin: 0 1rem;
-    font-size: 10pt;
-}
-
-nav a:hover {
-    color: var(--text);
-}
-
-nav a.nav-active {
-    color: var(--text);
-    font-weight: 600;
-}
-
-.back-link {
-    display: inline-block;
-    margin-bottom: 2rem;
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 10pt;
-}
-
-.back-link:hover {
-    color: var(--accent);
-}
-
-/* ================================
-   SECTIONS
-   ================================ */
-
-section h2 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: var(--text);
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.5rem;
-}
-
-section h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-top: 2rem;
-    margin-bottom: 0.75rem;
-}
-
-section h4 {
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Research areas */
-.research-area {
-    margin-bottom: 1.5rem;
-    padding-left: 1rem;
-    border-left: 2px solid var(--border);
-}
-
-.research-area .area-label {
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 0.5rem;
-}
-
-.research-area p {
-    font-size: 10.5pt;
-    color: var(--muted);
-}
-
-/* Video section */
-.video-section {
-    margin-top: 2rem;
-}
-
-.video-section > p {
-    margin-bottom: 0.5rem;
-}
-
-/* Video container */
-.video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    margin: 0.5rem 0;
-    border-radius: 4px;
-    border: 1px solid var(--border);
-}
-
-.video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-.video-caption {
-    font-size: 9pt;
-    color: var(--muted);
-    text-align: center;
-    margin-bottom: 1rem;
-    font-style: italic;
-}
-
-/* ================================
-   VARIA PAGE
-   ================================ */
-
-#varia h3 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-top: 1.75rem;
-    margin-bottom: 0.75rem;
-    color: var(--text);
-}
-
-#varia p {
-    margin-bottom: 1rem;
-}
-
-ul.varia-list {
-    margin: 0.5rem 0 1.5rem 1.25rem;
-    font-size: 10.5pt;
-}
-
-ul.varia-list li {
-    margin-bottom: 0.4rem;
-    line-height: 1.5;
-}
-
-/* ================================
    RESPONSIVE
    ================================ */
 
@@ -515,36 +674,49 @@ ul.varia-list li {
     .page-wrapper {
         padding: 2rem 1rem;
     }
-    
+
     .photo-frame {
         width: 250px;
         height: 250px;
     }
-    
+
     .photo-frame.small {
         width: 180px;
         height: 180px;
     }
-    
+
     .carousel-btn {
         width: 32px;
         height: 32px;
         font-size: 16px;
     }
-    
+
     .carousel-card {
         padding: 1.25rem 1rem;
     }
-    
+
     .card-title {
         font-size: 10.5pt;
     }
-    
+
     .social-icons {
         gap: 1rem;
     }
-    
-    nav a {
-        margin: 0 0.5rem;
+
+    .site-nav ul {
+        gap: 1rem;
+    }
+
+    .quick-links {
+        gap: 0.75rem;
+    }
+
+    .quick-link {
+        padding: 0.5rem 0.9rem;
+        font-size: 9.5pt;
+    }
+
+    .writing-item {
+        padding: 1rem;
     }
 }
