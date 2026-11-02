@@ -1,141 +1,722 @@
-/* ===== CV-MATCHED ACCENT COLOR ===== */
+/* ================================
+   ROOT VARIABLES - LIGHT THEME (PAPER)
+   ================================ */
+
 :root {
-    --accent: #782828;
+    --text: #1a1a1a;
+    --muted: #555;
+    --light: #777;
+    --border: #d4cfc7;
+    --bg: #faf8f5;
+    --accent: #782828;           /* CHANGED: was #8b0000, now matches LaTeX CV rgb(120,40,40) */
+    --card-bg: #f5f2ed;
+    --card-hover: #efebe5;
+    --controls-bg: #f0ebe4;
 }
 
-/* ===== SQUARE PAPER CARDS ===== */
-.carousel-card {
-    border-radius: 0;
-    border: 1px solid var(--border);
-    box-shadow: 
-        2px 2px 0 var(--card-bg),
-        4px 4px 0 var(--border);
+/* ================================
+   BASE STYLES
+   ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.carousel-viewport {
-    border-radius: 0;
+body {
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: var(--text);
+    background-color: var(--bg);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
 }
 
-.quick-link {
-    border-radius: 0;
+html {
+    scroll-behavior: smooth;
 }
 
-.photo-frame {
-    border-radius: 0;
+/* Content wrapper */
+.page-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+    min-height: 100vh;
 }
 
-.photo-frame img {
-    border-radius: 0;
+/* ================================
+   HEADER
+   ================================ */
+
+header {
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
-/* ===== STACKED PAPER EFFECT ON SECTIONS ===== */
-.research-statement {
-    border-radius: 0;
-    border: 1px solid var(--border);
-    background: var(--card-bg);
-    padding: 1.5rem;
-    box-shadow:
-        2px 2px 0 var(--card-bg),
-        4px 4px 0 var(--border);
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: var(--text);
 }
 
-.writing-item {
-    border-radius: 0;
-}
+/* ================================
+   STICKY NAV
+   ================================ */
 
-.upcoming-section {
-    border-radius: 0;
-}
-
-/* ===== LARGER PHOTOS, SIDE LAYOUT ON WIDE SCREENS ===== */
-.photo-frame img {
-    max-width: 100%;
-    width: 100%;
-}
-
-@media (min-width: 768px) {
-    /* Home section: photo + intro side by side */
-    #home > .photo-section,
-    #home > section.intro {
-        display: inline;
-    }
-
-    #home {
-        display: grid;
-        grid-template-columns: 1fr 1.4fr;
-        grid-template-rows: auto auto;
-        gap: 1.5rem;
-        align-items: start;
-    }
-
-    #home > .photo-section {
-        grid-column: 1;
-        grid-row: 1;
-        position: sticky;
-        top: 5rem;
-    }
-
-    #home > section.intro {
-        grid-column: 2;
-        grid-row: 1;
-    }
-
-    #home > .contact-section {
-        grid-column: 1 / -1;
-        grid-row: 2;
-    }
-
-    .photo-frame img {
-        width: 100%;
-        max-width: 280px;
-    }
-
-    /* Research section: photo + statement side by side */
-    #research {
-        display: grid;
-        grid-template-columns: 1fr 1.4fr;
-        gap: 1.5rem;
-        align-items: start;
-    }
-
-    #research > h2 {
-        grid-column: 1 / -1;
-    }
-
-    #research > .photo-section {
-        grid-column: 1;
-        position: sticky;
-        top: 5rem;
-    }
-
-    #research > .research-statement {
-        grid-column: 2;
-    }
-}
-
-/* On mobile, photos stay full-width and centered above content */
-@media (max-width: 767px) {
-    .photo-frame img {
-        max-width: 260px;
-        margin: 0 auto;
-        display: block;
-    }
-}
-
-/* ===== SQUARE DOTS AND BUTTONS ===== */
-.carousel-btn {
-    border-radius: 0;
-}
-
-.dot {
-    border-radius: 0;
-}
-
-/* ===== NAV MATCHES PAPER AESTHETIC ===== */
 .site-nav {
-    border-radius: 0;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 100;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.site-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.site-nav a {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 10pt;
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.site-nav a:hover {
+    color: var(--text);
+    text-decoration: none;
 }
 
 .site-nav a.active {
-    border-radius: 0;
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* ================================
+   PAGE SECTIONS & DIVIDERS
+   ================================ */
+
+.page-section {
+    padding-top: 1.5rem;
+}
+
+.section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+}
+
+/* ================================
+   PHOTO
+   ================================ */
+
+.photo-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.photo-frame {
+    width: 380px;              /* CHANGED: was 350px */
+    height: 380px;             /* CHANGED: was 350px */
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-frame.small {
+    width: 250px;
+    height: 250px;
+}
+
+/* ================================
+   GENERAL LINKS
+   ================================ */
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ================================
+   INTRO
+   ================================ */
+
+.intro {
+    text-align: left;
+}
+
+.intro p {
+    margin-bottom: 1rem;
+}
+
+/* ================================
+   QUICK LINKS
+   ================================ */
+
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0 2rem 0;
+    flex-wrap: wrap;
+}
+
+.quick-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.1rem;
+    border: 1px solid var(--border);
+    border-radius: 2px;        /* CHANGED: was 6px */
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 10pt;
+    transition: all 0.2s;
+    background: var(--bg);
+}
+
+.quick-link:hover {
+    background: var(--card-bg);
+    border-color: var(--muted);
+    text-decoration: none;
+}
+
+.quick-link svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ================================
+   CAROUSEL
+   ================================ */
+
+.upcoming-section {
+    margin: 2rem 0;
+}
+
+.upcoming-section h3 {
+    font-size: 10pt;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.carousel-viewport {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 2px;        /* CHANGED: was 6px */
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-card {
+    min-width: 100%;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;        /* CHANGED: was 6px */
+    text-align: center;
+    display: block;
+}
+
+.card-date {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 8pt;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 3px;        /* CHANGED: was 20px (pill shape) */
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.card-title {
+    font-size: 11pt;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.card-title a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.card-title a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.card-coauthor {
+    font-size: 9pt;
+    font-style: italic;
+    color: var(--muted);
+    margin-top: 0.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-coauthor a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.card-coauthor a:hover {
+    text-decoration: underline;
+}
+
+.card-venue {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin-bottom: 0.25rem;
+}
+
+.card-location {
+    font-size: 9pt;
+    color: var(--light);
+}
+
+/* Carousel buttons */
+.carousel-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    border-radius: 50%;
+    font-size: 18px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.carousel-btn:hover:not(:disabled) {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Carousel dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+}
+
+.dot:hover {
+    background: var(--muted);
+}
+
+.dot.active {
+    background: var(--accent);
+    transform: scale(1.2);
+}
+
+/* ================================
+   CONTACT SECTION
+   ================================ */
+
+.contact-section {
+    margin-top: 2rem;
+    padding: 1.25rem;
+    background: var(--controls-bg);
+    border-radius: 2px;        /* CHANGED: was 4px */
+    text-align: center;
+    border: 1px solid var(--border);
+}
+
+.contact-section p {
+    font-size: 10pt;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* ================================
+   RESEARCH STATEMENT
+   ================================ */
+
+.research-statement p {
+    margin-bottom: 1rem;
+    font-size: 10.5pt;
+    line-height: 1.65;
+}
+
+/* ================================
+   PAPERS / WRITING SECTION
+   ================================ */
+
+.writing-section-label {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--light);
+    margin: 2rem 0 0.5rem 0;
+    font-weight: 600;
+}
+
+.writing-section-note {
+    font-size: 10pt;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.writing-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+}
+
+.writing-item {
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--border);
+    border-bottom: none;
+    background: var(--bg);
+    transition: background 0.2s ease;
+}
+
+.writing-item:first-child {
+    border-radius: 2px 2px 0 0;    /* CHANGED: was 6px */
+}
+
+.writing-item:last-child {
+    border-bottom: 1px solid var(--border);
+    border-radius: 0 0 2px 2px;    /* CHANGED: was 6px */
+}
+
+.writing-item:only-child {
+    border-radius: 2px;             /* CHANGED: was 6px */
+    border-bottom: 1px solid var(--border);
+}
+
+.writing-item:hover {
+    background: var(--card-bg);
+}
+
+.writing-title {
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+    font-size: 10.5pt;
+    line-height: 1.45;
+}
+
+.writing-title a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.writing-title a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+.writing-meta {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin-bottom: 0.2rem;
+}
+
+.writing-note {
+    font-size: 9pt;
+    color: var(--light);
+    font-style: italic;
+}
+
+.writing-note a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.writing-note a:hover {
+    text-decoration: underline;
+}
+
+.papers-footer {
+    margin-top: 2rem;
+    font-size: 10pt;
+    color: var(--muted);
+}
+
+/* ================================
+   SECTIONS (general)
+   ================================ */
+
+section h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.5rem;
+}
+
+section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+section h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Research areas (unused now but kept for compatibility) */
+.research-area {
+    margin-bottom: 1.5rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--border);
+}
+
+.research-area .area-label {
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.research-area p {
+    font-size: 10.5pt;
+    color: var(--muted);
+}
+
+/* Video */
+.video-section {
+    margin-top: 2rem;
+}
+
+.video-section > p {
+    margin-bottom: 0.5rem;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    margin: 0.5rem 0;
+    border-radius: 2px;        /* CHANGED: was 4px */
+    border: 1px solid var(--border);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-caption {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+/* ================================
+   BACK NAV (varia page)
+   ================================ */
+
+.back-nav {
+    margin-bottom: 2rem;
+}
+
+.back-nav a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 10pt;
+    transition: color 0.2s;
+}
+
+.back-nav a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ================================
+   VARIA PAGE
+   ================================ */
+
+#varia h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+}
+
+#varia p {
+    margin-bottom: 1rem;
+}
+
+ul.varia-list {
+    margin: 0.5rem 0 1.5rem 1.25rem;
+    font-size: 10.5pt;
+}
+
+ul.varia-list li {
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+
+footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+
+footer p {
+    font-size: 9pt;
+    color: var(--light);
+    margin-top: 0.75rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+}
+
+.social-icons a {
+    color: var(--muted);
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icons a:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.social-icons svg {
+    width: 22px;
+    height: 22px;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 600px) {
+    .page-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    .photo-frame {
+        width: 280px;          /* CHANGED: was 250px (scales proportionally with larger desktop) */
+        height: 280px;         /* CHANGED: was 250px */
+    }
+
+    .photo-frame.small {
+        width: 180px;
+        height: 180px;
+    }
+
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .carousel-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .card-title {
+        font-size: 10.5pt;
+    }
+
+    .social-icons {
+        gap: 1rem;
+    }
+
+    .site-nav ul {
+        gap: 1rem;
+    }
+
+    .quick-links {
+        gap: 0.75rem;
+    }
+
+    .quick-link {
+        padding: 0.5rem 0.9rem;
+        font-size: 9.5pt;
+    }
+
+    .writing-item {
+        padding: 1rem;
+    }
 }
