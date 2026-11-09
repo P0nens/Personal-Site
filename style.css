@@ -8,7 +8,7 @@
     --light: #777;
     --border: #d4cfc7;
     --bg: #faf8f5;
-    --accent: #782828;           /* CHANGED: was #8b0000, now matches LaTeX CV rgb(120,40,40) */
+    --accent: #782828;
     --card-bg: #f5f2ed;
     --card-hover: #efebe5;
     --controls-bg: #f0ebe4;
@@ -33,10 +33,12 @@ body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    padding-bottom: 64px;
 }
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 /* Content wrapper */
@@ -79,7 +81,7 @@ header h1 {
 
 .site-nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 2rem;
     list-style: none;
     margin: 0;
@@ -130,8 +132,8 @@ header h1 {
 }
 
 .photo-frame {
-    width: 380px;              /* CHANGED: was 350px */
-    height: 380px;             /* CHANGED: was 350px */
+    width: 380px;
+    height: 380px;
     overflow: hidden;
     border: 1px solid var(--border);
     border-radius: 2px;
@@ -175,6 +177,25 @@ a:hover {
 }
 
 /* ================================
+   EXPAND BUTTON
+   ================================ */
+
+.expand-btn {
+    background: none;
+    border: none;
+    color: var(--accent);
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.expand-btn:hover {
+    color: var(--text);
+}
+
+/* ================================
    QUICK LINKS
    ================================ */
 
@@ -192,7 +213,7 @@ a:hover {
     gap: 0.5rem;
     padding: 0.6rem 1.1rem;
     border: 1px solid var(--border);
-    border-radius: 2px;        /* CHANGED: was 6px */
+    border-radius: 2px;
     text-decoration: none;
     color: var(--text);
     font-weight: 500;
@@ -240,7 +261,7 @@ a:hover {
 .carousel-viewport {
     flex: 1;
     overflow: hidden;
-    border-radius: 2px;        /* CHANGED: was 6px */
+    border-radius: 2px;
 }
 
 .carousel-track {
@@ -253,7 +274,7 @@ a:hover {
     padding: 1.5rem;
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 2px;        /* CHANGED: was 6px */
+    border-radius: 2px;
     text-align: center;
     display: block;
 }
@@ -265,7 +286,7 @@ a:hover {
     font-size: 8pt;
     font-weight: 600;
     padding: 4px 12px;
-    border-radius: 3px;        /* CHANGED: was 20px (pill shape) */
+    border-radius: 3px;
     margin-bottom: 0.75rem;
     letter-spacing: 0.5px;
 }
@@ -372,25 +393,6 @@ a:hover {
 }
 
 /* ================================
-   CONTACT SECTION
-   ================================ */
-
-.contact-section {
-    margin-top: 2rem;
-    padding: 1.25rem;
-    background: var(--controls-bg);
-    border-radius: 2px;        /* CHANGED: was 4px */
-    text-align: center;
-    border: 1px solid var(--border);
-}
-
-.contact-section p {
-    font-size: 10pt;
-    color: var(--muted);
-    margin: 0;
-}
-
-/* ================================
    RESEARCH STATEMENT
    ================================ */
 
@@ -435,16 +437,16 @@ a:hover {
 }
 
 .writing-item:first-child {
-    border-radius: 2px 2px 0 0;    /* CHANGED: was 6px */
+    border-radius: 2px 2px 0 0;
 }
 
 .writing-item:last-child {
     border-bottom: 1px solid var(--border);
-    border-radius: 0 0 2px 2px;    /* CHANGED: was 6px */
+    border-radius: 0 0 2px 2px;
 }
 
 .writing-item:only-child {
-    border-radius: 2px;             /* CHANGED: was 6px */
+    border-radius: 2px;
     border-bottom: 1px solid var(--border);
 }
 
@@ -524,7 +526,7 @@ section h4 {
     margin-bottom: 0.5rem;
 }
 
-/* Research areas (unused now but kept for compatibility) */
+/* Research areas */
 .research-area {
     margin-bottom: 1.5rem;
     padding-left: 1rem;
@@ -557,7 +559,7 @@ section h4 {
     height: 0;
     overflow: hidden;
     margin: 0.5rem 0;
-    border-radius: 2px;        /* CHANGED: was 4px */
+    border-radius: 2px;
     border: 1px solid var(--border);
 }
 
@@ -625,114 +627,8 @@ ul.varia-list li {
 }
 
 /* ================================
-   FOOTER
-   ================================ */
-
-footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--border);
-    text-align: center;
-}
-
-footer p {
-    font-size: 9pt;
-    color: var(--light);
-    margin-top: 0.75rem;
-}
-
-.social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1.25rem;
-}
-
-.social-icons a {
-    color: var(--muted);
-    transition: color 0.2s ease, transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.social-icons a:hover {
-    color: var(--accent);
-    transform: translateY(-2px);
-    text-decoration: none;
-}
-
-.social-icons svg {
-    width: 22px;
-    height: 22px;
-}
-
-/* ================================
-   RESPONSIVE
-   ================================ */
-
-@media (max-width: 600px) {
-    .page-wrapper {
-        padding: 2rem 1rem;
-    }
-
-    .photo-frame {
-        width: 280px;          /* CHANGED: was 250px (scales proportionally with larger desktop) */
-        height: 280px;         /* CHANGED: was 250px */
-    }
-
-    .photo-frame.small {
-        width: 180px;
-        height: 180px;
-    }
-
-    .carousel-btn {
-        width: 32px;
-        height: 32px;
-        font-size: 16px;
-    }
-
-    .carousel-card {
-        padding: 1.25rem 1rem;
-    }
-
-    .card-title {
-        font-size: 10.5pt;
-    }
-
-    .social-icons {
-        gap: 1rem;
-    }
-
-    .site-nav ul {
-        gap: 1rem;
-    }
-
-    .quick-links {
-        gap: 0.75rem;
-    }
-
-    .quick-link {
-        padding: 0.5rem 0.9rem;
-        font-size: 9.5pt;
-    }
-
-    .writing-item {
-        padding: 1rem;
-    }
-}
-
-
-/* ================================
    STICKY PROFILES BAR
    ================================ */
-
-body {
-    padding-bottom: 48px;
-}
-
-html {
-    scroll-padding-top: 80px;
-}
 
 .profiles-bar {
     position: fixed;
@@ -741,12 +637,18 @@ html {
     right: 0;
     z-index: 100;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem 1rem 0.4rem;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+}
+
+.profiles-links {
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.6rem 1rem;
-    background: var(--bg);
-    border-top: 1px solid var(--border);
 }
 
 .profiles-bar .profile-item {
@@ -784,11 +686,73 @@ html {
     line-height: 1;
 }
 
-/* Responsive adjustments for profiles bar */
+.profiles-copyright {
+    font-size: 8pt;
+    color: var(--light);
+    margin-top: 0.15rem;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
 @media (max-width: 600px) {
+    .page-wrapper {
+        padding: 2rem 1rem;
+    }
+
+    .photo-frame {
+        width: 280px;
+        height: 280px;
+    }
+
+    .photo-frame.small {
+        width: 180px;
+        height: 180px;
+    }
+
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .carousel-card {
+        padding: 1.25rem 1rem;
+    }
+
+    .card-title {
+        font-size: 10.5pt;
+    }
+
+    .site-nav ul {
+        gap: 1rem;
+    }
+
+    .quick-links {
+        gap: 0.75rem;
+    }
+
+    .quick-link {
+        padding: 0.5rem 0.9rem;
+        font-size: 9.5pt;
+    }
+
+    .writing-item {
+        padding: 1rem;
+    }
+
+    body {
+        padding-bottom: 58px;
+    }
+
     .profiles-bar {
+        gap: 0.15rem;
+        padding: 0.4rem 0.5rem 0.3rem;
+    }
+
+    .profiles-links {
         gap: 0.25rem;
-        padding: 0.5rem 0.5rem;
     }
 
     .profiles-bar .profile-item {
@@ -804,5 +768,9 @@ html {
 
     .profiles-bar .profile-sep {
         font-size: 8pt;
+    }
+
+    .profiles-copyright {
+        font-size: 7pt;
     }
 }
