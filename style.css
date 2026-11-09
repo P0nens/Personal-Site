@@ -1,5 +1,51 @@
 /* ================================
-   ROOT VARIABLES - LIGHT THEME (PAPER)
+   GOOGLE FONTS — Computer Modern equivalents
+   Latin Modern via GUST (closest to LaTeX default)
+   ================================ */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+@font-face {
+    font-family: 'CMU Serif';
+    src: url('https://cdn.jsdelivr.net/gh/niclasberg/latex-css@master/fonts/cmunrm-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CMU Serif';
+    src: url('https://cdn.jsdelivr.net/gh/niclasberg/latex-css@master/fonts/cmunbx-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CMU Serif';
+    src: url('https://cdn.jsdelivr.net/gh/niclasberg/latex-css@master/fonts/cmunti-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CMU Serif';
+    src: url('https://cdn.jsdelivr.net/gh/niclasberg/latex-css@master/fonts/cmunbi-webfont.woff') format('woff');
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CMU Typewriter';
+    src: url('https://cdn.jsdelivr.net/gh/niclasberg/latex-css@master/fonts/cmuntt-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ================================
+   ROOT VARIABLES
    ================================ */
 
 :root {
@@ -12,6 +58,8 @@
     --card-bg: #f5f2ed;
     --card-hover: #efebe5;
     --controls-bg: #f0ebe4;
+    --serif: 'CMU Serif', 'Latin Modern Roman', 'Libre Baskerville', 'Palatino Linotype', Georgia, serif;
+    --mono: 'CMU Typewriter', 'Latin Modern Mono', 'Courier New', Courier, monospace;
 }
 
 /* ================================
@@ -25,7 +73,7 @@
 }
 
 body {
-    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+    font-family: var(--serif);
     font-size: 11pt;
     line-height: 1.6;
     color: var(--text);
@@ -50,6 +98,24 @@ html {
 }
 
 /* ================================
+   LaTeX UTILITY CLASSES
+   ================================ */
+
+/* \texttt{} — monospace for URLs, emails, links */
+.tt, a.tt {
+    font-family: var(--mono);
+    font-size: 0.92em;
+    letter-spacing: -0.01em;
+}
+
+/* \textsc{} — small caps for section headings */
+.sc {
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+}
+
+/* ================================
    HEADER
    ================================ */
 
@@ -59,10 +125,11 @@ header {
 }
 
 header h1 {
+    font-family: var(--serif);
     font-size: 1.8rem;
     font-weight: 400;
     letter-spacing: 0.5px;
-    color: var(--text);
+    color: var(--accent);
 }
 
 /* ================================
@@ -91,20 +158,24 @@ header h1 {
 
 .site-nav a {
     text-decoration: none;
+    font-family: var(--serif);
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
     font-weight: 400;
-    font-size: 10pt;
+    font-size: 10.5pt;
     color: var(--muted);
     transition: color 0.2s;
 }
 
 .site-nav a:hover {
-    color: var(--text);
+    color: var(--accent);
     text-decoration: none;
 }
 
 .site-nav a.active {
-    color: var(--text);
-    font-weight: 600;
+    color: var(--accent);
+    font-weight: 700;
 }
 
 /* ================================
@@ -174,6 +245,9 @@ a:hover {
 
 .intro p {
     margin-bottom: 1rem;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
 }
 
 /* ================================
@@ -184,7 +258,7 @@ a:hover {
     background: none;
     border: none;
     color: var(--accent);
-    font-family: inherit;
+    font-family: var(--serif);
     font-size: inherit;
     cursor: pointer;
     padding: 0;
@@ -216,15 +290,17 @@ a:hover {
     border-radius: 2px;
     text-decoration: none;
     color: var(--text);
-    font-weight: 500;
-    font-size: 10pt;
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 9.5pt;
     transition: all 0.2s;
     background: var(--bg);
 }
 
 .quick-link:hover {
     background: var(--card-bg);
-    border-color: var(--muted);
+    border-color: var(--accent);
+    color: var(--accent);
     text-decoration: none;
 }
 
@@ -242,11 +318,13 @@ a:hover {
 }
 
 .upcoming-section h3 {
-    font-size: 10pt;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-family: var(--serif);
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--text);
     margin-bottom: 1rem;
     text-align: center;
 }
@@ -283,17 +361,19 @@ a:hover {
     display: inline-block;
     background: var(--accent);
     color: white;
+    font-family: var(--mono);
     font-size: 8pt;
-    font-weight: 600;
+    font-weight: 400;
     padding: 4px 12px;
-    border-radius: 3px;
+    border-radius: 2px;
     margin-bottom: 0.75rem;
     letter-spacing: 0.5px;
 }
 
 .card-title {
+    font-family: var(--serif);
     font-size: 11pt;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 1.4;
     margin-bottom: 0.5rem;
 }
@@ -393,26 +473,18 @@ a:hover {
 }
 
 /* ================================
-   RESEARCH STATEMENT
-   ================================ */
-
-.research-statement p {
-    margin-bottom: 1rem;
-    font-size: 10.5pt;
-    line-height: 1.65;
-}
-
-/* ================================
    PAPERS / WRITING SECTION
    ================================ */
 
 .writing-section-label {
-    font-size: 9pt;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--light);
+    font-family: var(--serif);
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    font-size: 11pt;
+    color: var(--text);
     margin: 2rem 0 0.5rem 0;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .writing-section-note {
@@ -455,20 +527,21 @@ a:hover {
 }
 
 .writing-title {
-    font-weight: 600;
+    font-weight: 400;
     margin-bottom: 0.35rem;
     font-size: 10.5pt;
     line-height: 1.45;
 }
 
 .writing-title a {
-    color: var(--text);
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 0.92em;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .writing-title a:hover {
-    color: var(--accent);
     text-decoration: underline;
 }
 
@@ -476,6 +549,7 @@ a:hover {
     font-size: 9.5pt;
     color: var(--muted);
     margin-bottom: 0.2rem;
+    font-style: italic;
 }
 
 .writing-note {
@@ -504,17 +578,22 @@ a:hover {
    ================================ */
 
 section h2 {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-family: var(--serif);
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
+    font-size: 1.2rem;
+    font-weight: 700;
     margin-bottom: 1rem;
-    color: var(--text);
+    color: var(--accent);
     border-bottom: 1px solid var(--border);
     padding-bottom: 0.5rem;
 }
 
 section h3 {
+    font-family: var(--serif);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 2rem;
     margin-bottom: 0.75rem;
 }
@@ -534,7 +613,7 @@ section h4 {
 }
 
 .research-area .area-label {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text);
     margin-bottom: 0.5rem;
 }
@@ -605,8 +684,12 @@ section h4 {
    ================================ */
 
 #varia h3 {
+    font-family: var(--serif);
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.05em;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     margin-top: 1.75rem;
     margin-bottom: 0.75rem;
     color: var(--text);
@@ -614,6 +697,9 @@ section h4 {
 
 #varia p {
     margin-bottom: 1rem;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
 }
 
 ul.varia-list {
@@ -655,8 +741,8 @@ ul.varia-list li {
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
-    font-size: 9.5pt;
+    font-family: var(--mono);
+    font-size: 8.5pt;
     font-weight: 400;
     color: var(--muted);
     text-decoration: none;
@@ -687,6 +773,7 @@ ul.varia-list li {
 }
 
 .profiles-copyright {
+    font-family: var(--serif);
     font-size: 8pt;
     color: var(--light);
     margin-top: 0.15rem;
@@ -735,7 +822,7 @@ ul.varia-list li {
 
     .quick-link {
         padding: 0.5rem 0.9rem;
-        font-size: 9.5pt;
+        font-size: 9pt;
     }
 
     .writing-item {
@@ -756,7 +843,7 @@ ul.varia-list li {
     }
 
     .profiles-bar .profile-item {
-        font-size: 8.5pt;
+        font-size: 7.5pt;
         gap: 0.2rem;
         padding: 0.15rem 0.25rem;
     }
