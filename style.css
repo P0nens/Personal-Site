@@ -720,3 +720,89 @@ footer p {
         padding: 1rem;
     }
 }
+
+
+/* ================================
+   STICKY PROFILES BAR
+   ================================ */
+
+body {
+    padding-bottom: 48px;
+}
+
+html {
+    scroll-padding-top: 80px;
+}
+
+.profiles-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1rem;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
+}
+
+.profiles-bar .profile-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia, serif;
+    font-size: 9.5pt;
+    font-weight: 400;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 0.15rem 0.4rem;
+    border-radius: 2px;
+    transition: color 0.2s ease;
+}
+
+.profiles-bar .profile-item:hover {
+    color: var(--accent);
+}
+
+.profiles-bar .profile-item svg {
+    flex-shrink: 0;
+    color: var(--light);
+    transition: color 0.2s ease;
+}
+
+.profiles-bar .profile-item:hover svg {
+    color: var(--accent);
+}
+
+.profiles-bar .profile-sep {
+    color: var(--border);
+    font-size: 10pt;
+    user-select: none;
+    line-height: 1;
+}
+
+/* Responsive adjustments for profiles bar */
+@media (max-width: 600px) {
+    .profiles-bar {
+        gap: 0.25rem;
+        padding: 0.5rem 0.5rem;
+    }
+
+    .profiles-bar .profile-item {
+        font-size: 8.5pt;
+        gap: 0.2rem;
+        padding: 0.15rem 0.25rem;
+    }
+
+    .profiles-bar .profile-item svg {
+        width: 13px;
+        height: 13px;
+    }
+
+    .profiles-bar .profile-sep {
+        font-size: 8pt;
+    }
+}
