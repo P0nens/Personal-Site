@@ -40,6 +40,50 @@
         .page-wrapper {
             padding-top: 4rem;
         }
+
+        /* ===== Section layout: photo + text side by side on desktop ===== */
+        .section-layout {
+            display: flex;
+            flex-direction: column; /* mobile default: photo on top */
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .section-layout .photo-section {
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .section-layout .section-content {
+            width: 100%;
+            min-width: 0;
+        }
+
+        /* Desktop: text left, photo right */
+        @media (min-width: 768px) {
+            .section-layout {
+                flex-direction: row-reverse; /* photo right, text left */
+                align-items: flex-start;
+            }
+
+            .section-layout .photo-section {
+                width: 280px;
+                flex-shrink: 0;
+                position: sticky;
+                top: 5rem; /* below the fixed banner */
+            }
+
+            .section-layout .section-content {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .section-layout .photo-section {
+                width: 320px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -53,136 +97,146 @@
 
         <!-- ==================== HOME ==================== -->
         <section id="home" class="page-section">
+            <div class="section-layout">
 
-            <div class="photo-section">
-                <div class="photo-frame">
-                    <img src="images/place_de_la_sorbonne.jpg" alt="Julian Lee-Sursin at Place de la Sorbonne">
-                </div>
-            </div>
-
-            <section class="intro">
-                <p>Hi! I'm Julian. I'm currently a master's student in cognitive science at the <a href="https://cognition.ens.fr/en">ENS</a>. Last year, I was a visiting scholar in the department of <a href="https://krieger.jhu.edu/comp-thought-lit/">Comparative Thought and Literature</a> at Johns Hopkins University (you can read about my research visit <a class="tt" href="Rapport_de_sejour_final.pdf">here</a>). Before that, I did my MPhil at <a href="https://www.sorbonne-universite.fr">Sorbonne Université</a> and my BA at <a href="https://www.oberlin.edu">Oberlin</a>.</p>
-
-                <p><span class="sc"><b>Research Areas</b></span>: Language, Cognitive Science, Philosophy of Science, Epistemology, Mind.
-                    <button class="expand-btn" aria-expanded="false" aria-controls="research-expand">Read more ▸</button>
-                </p>
-                <div id="research-expand" class="expandable-content" hidden>
-                    <p>My main research project involves analyzing explanation and why-questions by bringing tools from formal semantics (esp. question semantics and truthmakers) together with philosophical work on explanation-backing relations (esp. causation and composition). The rest of my research involves leveraging work in these areas towards closely related topics. For instance, I leverage work in epistemology and cognitive science to better understand agentic AI; I have also drawn on work on perception and modes of presentation to better understand fashion as a bearer of communicative content.</p>
-                </div>
-
-                <!-- Quick Links -->
-                <div class="quick-links">
-                    <a href="cv_red_nov_2026.pdf" class="quick-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                            <polyline points="14 2 14 8 20 8"/>
-                            <line x1="16" y1="13" x2="8" y2="13"/>
-                            <line x1="16" y1="17" x2="8" y2="17"/>
-                            <polyline points="10 9 9 9 8 9"/>
-                        </svg>
-                        CV
-                    </a>
-                    <a href="https://philpeople.org/profiles/julian-lee-sursin" target="_blank" rel="noopener" class="quick-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                            <circle cx="12" cy="7" r="4"/>
-                        </svg>
-                        PhilPeople
-                    </a>
-                </div>
-
-                <!-- Upcoming Talks -->
-                <div class="upcoming-section">
-                    <h3><span class="sc"><b>Upcoming Talks</b></span></h3>
-                    <div class="carousel-container">
-                        <button class="carousel-btn prev" aria-label="Previous talk">&#8249;</button>
-                        <div class="carousel-viewport">
-                            <div class="carousel-track">
-                                <div class="carousel-card">
-                                    <div class="card-date">Nov 13, 2026</div>
-                                    <div class="card-title">"<a href="https://www.southwesternphilosophical.org/meeting" target="_blank" rel="noopener">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</a>"</div>
-                                    <div class="card-venue">Southwestern Philosophical Society 88th Annual Meeting</div>
-                                    <div class="card-location">📍 El Paso, Texas</div>
-                                </div>
-                                <div class="carousel-card">
-                                    <div class="card-date">Jan 13–16, 2027</div>
-                                    <div class="card-title">Title TBD (new work on why-questions)</div>
-                                    <div class="card-venue">Eastern Division APA, Papers in Progress Workshop</div>
-                                    <div class="card-location">📍 Boston, Massachusetts</div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-btn next" aria-label="Next talk">&#8250;</button>
+                <div class="photo-section">
+                    <div class="photo-frame">
+                        <img src="images/place_de_la_sorbonne.jpg" alt="Julian Lee-Sursin at Place de la Sorbonne">
                     </div>
-                    <div class="carousel-dots"></div>
                 </div>
 
-            </section>
+                <div class="section-content">
+                    <section class="intro">
+                        <p>Hi! I'm Julian. I'm currently a master's student in cognitive science at the <a href="https://cognition.ens.fr/en">ENS</a>. Last year, I was a visiting scholar in the department of <a href="https://krieger.jhu.edu/comp-thought-lit/">Comparative Thought and Literature</a> at Johns Hopkins University (you can read about my research visit <a class="tt" href="Rapport_de_sejour_final.pdf">here</a>). Before that, I did my MPhil at <a href="https://www.sorbonne-universite.fr">Sorbonne Université</a> and my BA at <a href="https://www.oberlin.edu">Oberlin</a>.</p>
 
+                        <p><span class="sc"><b>Research Areas</b></span>: Language, Cognitive Science, Philosophy of Science, Epistemology, Mind.
+                            <button class="expand-btn" aria-expanded="false" aria-controls="research-expand">Read more ▸</button>
+                        </p>
+                        <div id="research-expand" class="expandable-content" hidden>
+                            <p>My main research project involves analyzing explanation and why-questions by bringing tools from formal semantics (esp. question semantics and truthmakers) together with philosophical work on explanation-backing relations (esp. causation and composition). The rest of my research involves leveraging work in these areas towards closely related topics. For instance, I leverage work in epistemology and cognitive science to better understand agentic AI; I have also drawn on work on perception and modes of presentation to better understand fashion as a bearer of communicative content.</p>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div class="quick-links">
+                            <a href="cv_red_nov_2026.pdf" class="quick-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
+                                </svg>
+                                CV
+                            </a>
+                            <a href="https://philpeople.org/profiles/julian-lee-sursin" target="_blank" rel="noopener" class="quick-link">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                PhilPeople
+                            </a>
+                        </div>
+
+                        <!-- Upcoming Talks -->
+                        <div class="upcoming-section">
+                            <h3><span class="sc"><b>Upcoming Talks</b></span></h3>
+                            <div class="carousel-container">
+                                <button class="carousel-btn prev" aria-label="Previous talk">&#8249;</button>
+                                <div class="carousel-viewport">
+                                    <div class="carousel-track">
+                                        <div class="carousel-card">
+                                            <div class="card-date">Nov 13, 2026</div>
+                                            <div class="card-title">"<a href="https://www.southwesternphilosophical.org/meeting" target="_blank" rel="noopener">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</a>"</div>
+                                            <div class="card-venue">Southwestern Philosophical Society 88th Annual Meeting</div>
+                                            <div class="card-location">📍 El Paso, Texas</div>
+                                        </div>
+                                        <div class="carousel-card">
+                                            <div class="card-date">Jan 13–16, 2027</div>
+                                            <div class="card-title">Title TBD (new work on why-questions)</div>
+                                            <div class="card-venue">Eastern Division APA, Papers in Progress Workshop</div>
+                                            <div class="card-location">📍 Boston, Massachusetts</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-btn next" aria-label="Next talk">&#8250;</button>
+                            </div>
+                            <div class="carousel-dots"></div>
+                        </div>
+
+                    </section>
+                </div>
+
+            </div>
         </section>
 
         <hr class="section-divider">
 
         <!-- ==================== RESEARCH ==================== -->
         <section id="research" class="page-section">
+            <div class="section-layout">
 
-            <div class="photo-section">
-                <div class="photo-frame">
-                    <img src="images/research_photo.jpg" alt="Julian Lee-Sursin">
+                <div class="photo-section">
+                    <div class="photo-frame">
+                        <img src="images/research_photo.jpg" alt="Julian Lee-Sursin">
+                    </div>
                 </div>
+
+                <div class="section-content">
+
+                    <!-- Publication & Preprint -->
+                    <p class="writing-section-label"><span class="sc"><b>Publication &amp; Preprint</b></span></p>
+
+                    <ul class="writing-list">
+                        <li class="writing-item">
+                            <div class="writing-title"><b>Lee-Sursin, J.</b> (2026) "Panpsychism and the Individuation Problem: Comments on Taofeek"</div>
+                            <div class="writing-meta"><em>Southwest Philosophy Review</em> 42(2): 89–96</div>
+                            <div class="writing-link"><a class="tt" href="https://doi.org/10.5840/swphilreview202642247" target="_blank" rel="noopener">doi.org/10.5840/swphilreview202642247</a></div>
+                        </li>
+                        <li class="writing-item">
+                            <div class="writing-title">
+                                <b>Lee-Sursin, J.</b> and Ryoo, H.J. (2026) "A Regress Argument Concerning Autonomous Self-Correction in AI Agents" [Preprint]
+                            </div>
+                            <div class="writing-note">with <a href="https://hongjooryoo.com" target="_blank" rel="noopener">Hong Joo Ryoo</a></div>
+                            <div class="writing-link"><a class="tt" href="https://philsci-archive.pitt.edu/id/eprint/30629" target="_blank" rel="noopener">philsci-archive.pitt.edu/id/eprint/30629</a></div>
+                        </li>
+                    </ul>
+
+                    <!-- Under Review -->
+                    <p class="writing-section-label"><span class="sc"><b>Under Review</b></span></p>
+                    <p class="writing-section-note">Drafts available upon request.</p>
+
+                    <ul class="writing-list">
+                        <li class="writing-item">
+                            <div class="writing-title">"Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?"</div>
+                            <div class="writing-note">&#42; A draft of this paper was awarded the <b>Indiana Philosophical Association 2025 Graduate Paper Prize</b></div>
+                        </li>
+                        <li class="writing-item">
+                            <div class="writing-title">"Perception and Modes of Presentation in Fashion"</div>
+                            <div class="writing-note">&#42; A draft of this paper was awarded an <b>Honorarium</b> by the Institut Français de la Mode</div>
+                            <div class="video-container" style="margin-top: 0.75rem;">
+                                <iframe
+                                    src="https://www.youtube.com/embed/V7v8WOq3N6E?start=8561"
+                                    title="Fashion and the Jacksonian Mode — Institut Français de la Mode 2025"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            <p class="video-caption">Talk at the Institut Français de la Mode Symposium, Paris, Nov 2025</p>
+                        </li>
+                        <li class="writing-item">
+                            <div class="writing-title">"Towards a Cognitive Model of Informativeness"</div>
+                        </li>
+                        <li class="writing-item">
+                            <div class="writing-title">"From Complementarity to Explanation"</div>
+                            <div class="writing-note">with <a href="https://hongjooryoo.com" target="_blank" rel="noopener">Hong Joo Ryoo</a></div>
+                        </li>
+                    </ul>
+
+                    <p class="writing-section-note" style="margin-top: 1.5rem;">See my <a class="tt" href="cv_red_nov_2026.pdf">CV</a> for a full list of papers and talks.</p>
+
+                </div>
+
             </div>
-
-            <!-- Publication & Preprint -->
-            <p class="writing-section-label"><span class="sc"><b>Publication &amp; Preprint</b></span></p>
-
-            <ul class="writing-list">
-                <li class="writing-item">
-                    <div class="writing-title"><b>Lee-Sursin, J.</b> (2026) "Panpsychism and the Individuation Problem: Comments on Taofeek"</div>
-                    <div class="writing-meta"><em>Southwest Philosophy Review</em> 42(2): 89–96</div>
-                    <div class="writing-link"><a class="tt" href="https://doi.org/10.5840/swphilreview202642247" target="_blank" rel="noopener">doi.org/10.5840/swphilreview202642247</a></div>
-                </li>
-                <li class="writing-item">
-                    <div class="writing-title">
-                        <b>Lee-Sursin, J.</b> and Ryoo, H.J. (2026) "A Regress Argument Concerning Autonomous Self-Correction in AI Agents" [Preprint]
-                    </div>
-                    <div class="writing-note">with <a href="https://hongjooryoo.com" target="_blank" rel="noopener">Hong Joo Ryoo</a></div>
-                    <div class="writing-link"><a class="tt" href="https://philsci-archive.pitt.edu/id/eprint/30629" target="_blank" rel="noopener">philsci-archive.pitt.edu/id/eprint/30629</a></div>
-                </li>
-            </ul>
-
-            <!-- Under Review -->
-            <p class="writing-section-label"><span class="sc"><b>Under Review</b></span></p>
-            <p class="writing-section-note">Drafts available upon request.</p>
-
-            <ul class="writing-list">
-                <li class="writing-item">
-                    <div class="writing-title">"Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?"</div>
-                    <div class="writing-note">&#42; A draft of this paper was awarded the <b>Indiana Philosophical Association 2025 Graduate Paper Prize</b></div>
-                </li>
-                <li class="writing-item">
-                    <div class="writing-title">"Perception and Modes of Presentation in Fashion"</div>
-                    <div class="writing-note">&#42; A draft of this paper was awarded an <b>Honorarium</b> by the Institut Français de la Mode</div>
-                    <div class="video-container" style="margin-top: 0.75rem;">
-                        <iframe
-                            src="https://www.youtube.com/embed/V7v8WOq3N6E?start=8561"
-                            title="Fashion and the Jacksonian Mode — Institut Français de la Mode 2025"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                            allowfullscreen>
-                        </iframe>
-                    </div>
-                    <p class="video-caption">Talk at the Institut Français de la Mode Symposium, Paris, Nov 2025</p>
-                </li>
-                <li class="writing-item">
-                    <div class="writing-title">"Towards a Cognitive Model of Informativeness"</div>
-                </li>
-                <li class="writing-item">
-                    <div class="writing-title">"From Complementarity to Explanation"</div>
-                    <div class="writing-note">with <a href="https://hongjooryoo.com" target="_blank" rel="noopener">Hong Joo Ryoo</a></div>
-                </li>
-            </ul>
-
-            <p class="writing-section-note" style="margin-top: 1.5rem;">See my <a class="tt" href="cv_red_nov_2026.pdf">CV</a> for a full list of papers and talks.</p>
-
         </section>
 
         <hr class="section-divider">
