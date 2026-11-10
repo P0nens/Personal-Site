@@ -36,15 +36,19 @@
             letter-spacing: 0.04em;
         }
 
-        /* Push page content below the fixed banner */
+        /* Center the page and push below banner */
         .page-wrapper {
             padding-top: 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
         }
 
         /* ===== Section layout: photo + text side by side on desktop ===== */
         .section-layout {
             display: flex;
-            flex-direction: column; /* mobile default: photo on top */
+            flex-direction: column; /* mobile: photo on top */
             gap: 2rem;
             align-items: flex-start;
         }
@@ -59,30 +63,48 @@
             min-width: 0;
         }
 
-        /* Desktop: text left, photo right */
+        /* Desktop: 2/3 text, 1/3 photo */
         @media (min-width: 768px) {
+            .page-wrapper {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
             .section-layout {
-                flex-direction: row-reverse; /* photo right, text left */
+                flex-direction: row;
                 align-items: flex-start;
             }
 
+            /* Photo right (default) */
             .section-layout .photo-section {
-                width: 280px;
+                width: 33.333%;
                 flex-shrink: 0;
+                order: 2;
                 position: sticky;
-                top: 5rem; /* below the fixed banner */
+                top: 5rem;
             }
 
             .section-layout .section-content {
-                flex: 1;
-                min-width: 0;
+                width: 66.666%;
+                flex: none;
+                order: 1;
+            }
+
+            /* Photo left variant */
+            .section-layout.photo-left .photo-section {
+                order: 1;
+            }
+
+            .section-layout.photo-left .section-content {
+                order: 2;
             }
         }
 
-        @media (min-width: 1024px) {
-            .section-layout .photo-section {
-                width: 320px;
-            }
+        /* Upcoming talks: full width, centered, on its own */
+        .upcoming-section-wrapper {
+            width: 100%;
+            max-width: 600px;
+            margin: 2rem auto 0 auto;
         }
     </style>
 </head>
@@ -136,44 +158,46 @@
                                 PhilPeople
                             </a>
                         </div>
-
-                        <!-- Upcoming Talks -->
-                        <div class="upcoming-section">
-                            <h3><span class="sc"><b>Upcoming Talks</b></span></h3>
-                            <div class="carousel-container">
-                                <button class="carousel-btn prev" aria-label="Previous talk">&#8249;</button>
-                                <div class="carousel-viewport">
-                                    <div class="carousel-track">
-                                        <div class="carousel-card">
-                                            <div class="card-date">Nov 13, 2026</div>
-                                            <div class="card-title">"<a href="https://www.southwesternphilosophical.org/meeting" target="_blank" rel="noopener">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</a>"</div>
-                                            <div class="card-venue">Southwestern Philosophical Society 88th Annual Meeting</div>
-                                            <div class="card-location">📍 El Paso, Texas</div>
-                                        </div>
-                                        <div class="carousel-card">
-                                            <div class="card-date">Jan 13–16, 2027</div>
-                                            <div class="card-title">Title TBD (new work on why-questions)</div>
-                                            <div class="card-venue">Eastern Division APA, Papers in Progress Workshop</div>
-                                            <div class="card-location">📍 Boston, Massachusetts</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="carousel-btn next" aria-label="Next talk">&#8250;</button>
-                            </div>
-                            <div class="carousel-dots"></div>
-                        </div>
-
                     </section>
                 </div>
 
             </div>
+
+            <!-- Upcoming Talks: centered on its own line -->
+            <div class="upcoming-section-wrapper">
+                <div class="upcoming-section">
+                    <h3><span class="sc"><b>Upcoming Talks</b></span></h3>
+                    <div class="carousel-container">
+                        <button class="carousel-btn prev" aria-label="Previous talk">&#8249;</button>
+                        <div class="carousel-viewport">
+                            <div class="carousel-track">
+                                <div class="carousel-card">
+                                    <div class="card-date">Nov 13, 2026</div>
+                                    <div class="card-title">"<a href="https://www.southwesternphilosophical.org/meeting" target="_blank" rel="noopener">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</a>"</div>
+                                    <div class="card-venue">Southwestern Philosophical Society 88th Annual Meeting</div>
+                                    <div class="card-location">📍 El Paso, Texas</div>
+                                </div>
+                                <div class="carousel-card">
+                                    <div class="card-date">Jan 13–16, 2027</div>
+                                    <div class="card-title">Title TBD (new work on why-questions)</div>
+                                    <div class="card-venue">Eastern Division APA, Papers in Progress Workshop</div>
+                                    <div class="card-location">📍 Boston, Massachusetts</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn next" aria-label="Next talk">&#8250;</button>
+                    </div>
+                    <div class="carousel-dots"></div>
+                </div>
+            </div>
+
         </section>
 
         <hr class="section-divider">
 
         <!-- ==================== RESEARCH ==================== -->
         <section id="research" class="page-section">
-            <div class="section-layout">
+            <div class="section-layout photo-left">
 
                 <div class="photo-section">
                     <div class="photo-frame">
