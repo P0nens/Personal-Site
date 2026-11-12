@@ -14,20 +14,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Varia — Julian Lee-Sursin</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Persistent centered top banner */
+        .name-banner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            text-align: center;
+            background: var(--bg, #ffffff);
+            border-bottom: 1px solid var(--border, #e0e0e0);
+            padding: 0.75rem 1rem;
+            margin: 0;
+        }
+
+        .name-banner h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 1.4rem;
+            letter-spacing: 0.04em;
+        }
+
+        .name-banner h1 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .name-banner h1 a:hover {
+            text-decoration: none;
+            color: var(--accent);
+        }
+
+        /* Center the page and push below banner */
+        .page-wrapper {
+            padding-top: 4rem;
+            max-width: 960px;
+            margin: 0 auto;
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+        }
+
+        @media (min-width: 768px) {
+            .page-wrapper {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <div class="page-wrapper">
+    <!-- Persistent Name Banner -->
+    <div class="name-banner">
+        <h1><a href="index.html">Julian Lee-Sursin</a></h1>
+    </div>
 
-        <header>
-            <h1>Julian Lee-Sursin</h1>
-        </header>
+    <div class="page-wrapper">
 
         <div class="back-nav">
             <a href="index.html">&#8592; Back to main page</a>
         </div>
 
-        <section id="varia">
+        <section id="varia" class="page-section">
             <h2>Varia</h2>
 
             <div class="photo-section">
@@ -36,15 +85,15 @@
                 </div>
             </div>
 
-            <p>I have a few interests outside of philosophy and cognitive science.</p>
+            <p style="text-align: justify; hyphens: auto; -webkit-hyphens: auto; margin-bottom: 1rem;">I have a few interests outside of philosophy and cognitive science.</p>
 
             <h3>Fashion</h3>
-            <p>In March 2025, I had the chance to perform in Paris Fashion Week with <a href="https://jtdapperfashionweek.com/2025/03/10/duran-lantink-fall-winter-2025-at-paris-fashion-week/" target="_blank" rel="noopener"><em>Duranimal</em></a> (Duran Lantink's show) and at the <a href="https://www.sauthermes.com/fr/" target="_blank" rel="noopener">Saut Hermès</a> dinner. These experiences gave me a firsthand look at how fashion can act as a communicative medium. Naturally, these experiences influenced some of my views about how fashion is like a language (see my work on <a href="index.html#papers">perception and mode-dependent content in fashion</a>).</p>
+            <p style="text-align: justify; hyphens: auto; -webkit-hyphens: auto; margin-bottom: 1rem;">In March 2025, I had the chance to perform in Paris Fashion Week with <a href="https://jtdapperfashionweek.com/2025/03/10/duran-lantink-fall-winter-2025-at-paris-fashion-week/" target="_blank" rel="noopener"><em>Duranimal</em></a> (Duran Lantink's show) and at the <a href="https://www.sauthermes.com/fr/" target="_blank" rel="noopener">Saut Hermès</a> dinner. These experiences gave me a firsthand look at how fashion can act as a communicative medium. Naturally, these experiences influenced some of my views about how fashion is like a language (see my work on <a href="index.html#research">perception and mode-dependent content in fashion</a>).</p>
 
             <h3>Music</h3>
-            <p>I am a classically trained bass vocalist. Currently, I sing with the <a href="https://philharmoniedeparis.fr/fr/orchestre-de-paris/le-choeur">Choir of the Orchestra of Paris</a>. Before that, I studied at the Peabody Conservatory and the Oberlin Conservatory.</p>
+            <p style="text-align: justify; hyphens: auto; -webkit-hyphens: auto; margin-bottom: 1rem;">I am a classically trained bass vocalist. Currently, I sing with the <a href="https://philharmoniedeparis.fr/fr/orchestre-de-paris/le-choeur">Choir of the Orchestra of Paris</a>. Before that, I studied at the Peabody Conservatory and the Oberlin Conservatory.</p>
 
-            <p>Some notable concerts I've sung in:</p>
+            <p style="margin-bottom: 0.5rem;">Some notable concerts I've sung in:</p>
             <ul class="varia-list">
                 <li><a href="https://philharmoniedeparis.fr/en/activite/29623" target="_blank" rel="noopener">Berlioz's <em>Romeo et Juliette</em></a> with the Orchestre de Paris, dir. Klaus Mäkelä (Oct 2026)</li>
                 <li>Verdi's <em>Macbeth</em> with Plácido Domingo at <a href="https://www.sallegaveau.com/spectacles/placido-domingo" target="_blank" rel="noopener">Salle Gaveau</a> (Apr 2025)</li>
@@ -56,40 +105,46 @@
             </ul>
 
             <h3>Sports</h3>
-            <p>I also enjoy a few sports that have nothing to do with my research (as far as I can tell). I play chess, currently rated <a href="https://ratings.fide.com/profile/26045931" target="_blank" rel="noopener">1742 FIDE (blitz)</a>. In college, I was a defensive end for Oberlin's football team. And in high school, I played varsity tennis.</p>
+            <p style="text-align: justify; hyphens: auto; -webkit-hyphens: auto; margin-bottom: 1rem;">I also enjoy a few sports that have nothing to do with my research (as far as I can tell). I play chess, currently rated <a href="https://ratings.fide.com/profile/26045931" target="_blank" rel="noopener">1742 FIDE (blitz)</a>. In college, I was a defensive end for Oberlin's football team. And in high school, I played varsity tennis.</p>
         </section>
 
-        <!-- ==================== FOOTER ==================== -->
-        <footer>
-            <div class="social-icons">
-                <a href="mailto:julian.sursin@ens.psl.eu" aria-label="Email">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <rect width="20" height="16" x="2" y="4" rx="2"/>
-                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                    </svg>
-                </a>
-                <a href="https://www.linkedin.com/in/julian-lee-sursin/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect width="4" height="12" x="2" y="9"/>
-                        <circle cx="4" cy="4" r="2"/>
-                    </svg>
-                </a>
-                <a href="https://philpeople.org/profiles/julian-lee-sursin" target="_blank" rel="noopener" aria-label="PhilPeople">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                </a>
-                <a href="https://bsky.app/profile/ponens.bsky.social" target="_blank" rel="noopener" aria-label="Bluesky">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2C6.5 7 4 10 4 13a8 8 0 0 0 8 8 8 8 0 0 0 8-8c0-3-2.5-6-8-11z"/>
-                    </svg>
-                </a>
-            </div>
-            <p>&copy; 2026 Julian Lee-Sursin</p>
-        </footer>
+    </div>
 
+    <!-- ==================== STICKY PROFILES BAR ==================== -->
+    <div class="profiles-bar">
+        <div class="profiles-links">
+            <a href="https://scholar.google.com/citations?user=Ro8k8_0AAAAJ&hl=en" target="_blank" rel="noopener" class="profile-item" aria-label="Google Scholar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512">
+                    <path fill="currentColor" d="M390.9 298.5c0 0 0 .1.1.1 9.2 19.4 14.4 41.1 14.4 64.1 0 83.1-63.9 151.4-142.8 151.4-78.9 0-142.8-68.3-142.8-151.4 0-83.1 63.9-151.4 142.8-151.4 34.6 0 66.4 12.9 91.1 34.1l51.2-49.2c-37.4-33.9-86.6-54.7-142.3-54.7C143.1 141.5 52 236.8 52 354.8s91.1 213.3 209.6 213.3c121 0 201.3-85 201.3-204.7 0-14.8-1.5-29.1-4.4-43z"/>
+                    <path fill="currentColor" d="M256 0L0 256h97.7V512h316.6V256H512z" opacity="0.7"/>
+                </svg>
+                <span>Google Scholar</span>
+            </a>
+            <span class="profile-sep">·</span>
+            <a href="https://www.linkedin.com/in/julian-lee-sursin/" target="_blank" rel="noopener" class="profile-item" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zM6.901 20.452H3.769V9h3.132v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                <span>LinkedIn</span>
+            </a>
+            <span class="profile-sep">·</span>
+            <a href="https://philpeople.org/profiles/julian-lee-sursin" target="_blank" rel="noopener" class="profile-item" aria-label="PhilPeople">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <span>PhilPeople</span>
+            </a>
+            <span class="profile-sep">·</span>
+            <a href="mailto:julian.sursin@ens.psl.eu" class="profile-item" aria-label="Email">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+                <span>Email</span>
+            </a>
+        </div>
+        <p class="profiles-copyright">&copy; 2026 Julian Lee-Sursin</p>
     </div>
 
 </body>
