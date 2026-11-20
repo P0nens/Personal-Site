@@ -48,7 +48,7 @@
         /* ===== Section layout: photo + text side by side on desktop ===== */
         .section-layout {
             display: flex;
-            flex-direction: column; /* mobile: photo on top */
+            flex-direction: column;
             gap: 2rem;
             align-items: flex-start;
         }
@@ -75,7 +75,6 @@
                 align-items: flex-start;
             }
 
-            /* Photo right (default) */
             .section-layout .photo-section {
                 width: 33.333%;
                 flex-shrink: 0;
@@ -90,7 +89,6 @@
                 order: 1;
             }
 
-            /* Photo left variant */
             .section-layout.photo-left .photo-section {
                 order: 1;
             }
@@ -172,12 +170,6 @@
                         <div class="carousel-viewport">
                             <div class="carousel-track">
                                 <div class="carousel-card">
-                                    <div class="card-date">Nov 13, 2026</div>
-                                    <div class="card-title">"<a href="https://www.southwesternphilosophical.org/meeting" target="_blank" rel="noopener">Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?</a>"</div>
-                                    <div class="card-venue">Southwestern Philosophical Society 88th Annual Meeting</div>
-                                    <div class="card-location">📍 El Paso, Texas</div>
-                                </div>
-                                <div class="carousel-card">
                                     <div class="card-date">Jan 13–16, 2027</div>
                                     <div class="card-title">Title TBD (new work on why-questions)</div>
                                     <div class="card-venue">Eastern Division APA, Papers in Progress Workshop</div>
@@ -207,10 +199,15 @@
 
                 <div class="section-content">
 
-                    <!-- Publication & Preprint -->
-                    <p class="writing-section-label"><span class="sc"><b>Publication &amp; Preprint</b></span></p>
+                    <!-- Papers -->
+                    <p class="writing-section-label"><span class="sc"><b>Papers</b></span></p>
 
                     <ul class="writing-list">
+                        <li class="writing-item">
+                            <div class="writing-title"><b>Lee-Sursin, J.</b> (forthcoming 2027) "Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?"</div>
+                            <div class="writing-meta"><em>Southwest Philosophy Review</em> 43(1)</div>
+                            <div class="writing-note">&#42; A previous draft was awarded the <b>Indiana Philosophical Association 2025 Graduate Paper Prize</b></div>
+                        </li>
                         <li class="writing-item">
                             <div class="writing-title"><b>Lee-Sursin, J.</b> (2026) "Panpsychism and the Individuation Problem: Comments on Taofeek"</div>
                             <div class="writing-meta"><em>Southwest Philosophy Review</em> 42(2): 89–96</div>
@@ -231,12 +228,8 @@
 
                     <ul class="writing-list">
                         <li class="writing-item">
-                            <div class="writing-title">"Is Acquaintance a <em>Sui Generis</em> Epistemic Relation?"</div>
-                            <div class="writing-note">&#42; A draft of this paper was awarded the <b>Indiana Philosophical Association 2025 Graduate Paper Prize</b></div>
-                        </li>
-                        <li class="writing-item">
                             <div class="writing-title">"Perception and Modes of Presentation in Fashion"</div>
-                            <div class="writing-note">&#42; A draft of this paper was awarded an <b>Honorarium</b> by the Institut Français de la Mode</div>
+                            <div class="writing-note">&#42; A previous draft was awarded an <b>Honorarium</b> by the Institut Français de la Mode</div>
                             <div class="video-container" style="margin-top: 0.75rem;">
                                 <iframe
                                     src="https://www.youtube.com/embed/V7v8WOq3N6E?start=8561"
@@ -330,63 +323,65 @@
             var nextBtn = document.querySelector('.carousel-btn.next');
             var dotsContainer = document.querySelector('.carousel-dots');
 
-            var currentIndex = 0;
-            var totalCards = cards.length;
+            if (track && cards.length && prevBtn && nextBtn && dotsContainer) {
+                var currentIndex = 0;
+                var totalCards = cards.length;
 
-            // Create dots
-            cards.forEach(function(_, index) {
-                var dot = document.createElement('button');
-                dot.classList.add('dot');
-                if (index === 0) dot.classList.add('active');
-                dot.setAttribute('aria-label', 'Go to talk ' + (index + 1));
-                dot.addEventListener('click', function() { goToSlide(index); });
-                dotsContainer.appendChild(dot);
-            });
-
-            var dots = document.querySelectorAll('.dot');
-
-            function updateCarousel() {
-                track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
-                dots.forEach(function(dot, index) {
-                    dot.classList.toggle('active', index === currentIndex);
+                // Create dots
+                cards.forEach(function(_, index) {
+                    var dot = document.createElement('button');
+                    dot.classList.add('dot');
+                    if (index === 0) dot.classList.add('active');
+                    dot.setAttribute('aria-label', 'Go to talk ' + (index + 1));
+                    dot.addEventListener('click', function() { goToSlide(index); });
+                    dotsContainer.appendChild(dot);
                 });
-                prevBtn.disabled = (currentIndex === 0);
-                nextBtn.disabled = (currentIndex === totalCards - 1);
-            }
 
-            function goToSlide(index) {
-                currentIndex = index;
+                var dots = document.querySelectorAll('.dot');
+
+                function updateCarousel() {
+                    track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+                    dots.forEach(function(dot, index) {
+                        dot.classList.toggle('active', index === currentIndex);
+                    });
+                    prevBtn.disabled = (currentIndex === 0);
+                    nextBtn.disabled = (currentIndex === totalCards - 1);
+                }
+
+                function goToSlide(index) {
+                    currentIndex = index;
+                    updateCarousel();
+                }
+
+                function nextSlide() {
+                    if (currentIndex < totalCards - 1) { currentIndex++; updateCarousel(); }
+                }
+
+                function prevSlide() {
+                    if (currentIndex > 0) { currentIndex--; updateCarousel(); }
+                }
+
+                prevBtn.addEventListener('click', prevSlide);
+                nextBtn.addEventListener('click', nextSlide);
+
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'ArrowLeft') prevSlide();
+                    if (e.key === 'ArrowRight') nextSlide();
+                });
+
+                // Touch support
+                var touchStartX = 0;
+                track.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+                track.addEventListener('touchend', function(e) {
+                    var diff = touchStartX - e.changedTouches[0].screenX;
+                    if (diff > 50) nextSlide();
+                    else if (diff < -50) prevSlide();
+                }, { passive: true });
+
                 updateCarousel();
             }
-
-            function nextSlide() {
-                if (currentIndex < totalCards - 1) { currentIndex++; updateCarousel(); }
-            }
-
-            function prevSlide() {
-                if (currentIndex > 0) { currentIndex--; updateCarousel(); }
-            }
-
-            prevBtn.addEventListener('click', prevSlide);
-            nextBtn.addEventListener('click', nextSlide);
-
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowLeft') prevSlide();
-                if (e.key === 'ArrowRight') nextSlide();
-            });
-
-            // Touch support
-            var touchStartX = 0;
-            track.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-            }, { passive: true });
-            track.addEventListener('touchend', function(e) {
-                var diff = touchStartX - e.changedTouches[0].screenX;
-                if (diff > 50) nextSlide();
-                else if (diff < -50) prevSlide();
-            }, { passive: true });
-
-            updateCarousel();
         });
     </script>
 
